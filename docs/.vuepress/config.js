@@ -1,10 +1,11 @@
 module.exports = {
-    title: 'RabbitNoTeeth′s blog',
+    title: 'RabbitNoTeeth′s Blog',
     description: '刘新冬的技术博客，记录学习笔记以及开发中遇到的各种技术问题',
     head: [
-        ['link', {rel: 'icon', href: '/img/logo.ico'}]
+        ['link', {rel: 'icon', href: '/img/logo.png'}]
     ],
     themeConfig: {
+        logo: '/img/logo.png',
         nav: [
             {text: '首页', link: '/'},
             {
