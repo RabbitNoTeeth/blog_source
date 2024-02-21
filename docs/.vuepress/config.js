@@ -24,11 +24,14 @@ module.exports = {
                     sidebarDepth: 1,    // 可选的, 默认值是 1
                     children: [
                         ['/docker/', '简介'],
-                        ['/docker/aaa', 'aaa文章'],
-                        ['/docker/bbb', 'bbb文章'],
+                        ['/docker/基本概念', '基本概念']
                     ]
                 }
             ]
         }
-    }
+    },
+    plugins: [
+        '@vuepress/back-to-top',
+        '@vuepress/nprogress'
+    ]
 }
