@@ -21,10 +21,11 @@ module.exports = {
                 {
                     title: 'docker',   // 必要的
                     collapsable: false, // 可选的, 默认值是 true,
-                    sidebarDepth: 1,    // 可选的, 默认值是 1
+                    sidebarDepth: 2,    // 可选的, 默认值是 1
                     children: [
                         ['/docker/', '简介'],
-                        ['/docker/基本概念', '基本概念']
+                        ['/docker/基本概念', '基本概念'],
+                        ['/docker/常用命令', '常用命令']
                     ]
                 }
             ]
@@ -32,6 +33,7 @@ module.exports = {
     },
     plugins: [
         '@vuepress/back-to-top',
-        '@vuepress/nprogress'
+        '@vuepress/nprogress',
+        '@xiaopanda/vuepress-plugin-code-copy'
     ]
 }

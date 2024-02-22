@@ -11,6 +11,7 @@
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.9.10",
     "@vuepress/plugin-nprogress": "^1.9.10",
+    "@xiaopanda/vuepress-plugin-code-copy": "^1.0.3",
     "vuepress": "^1.9.10"
   }
 }

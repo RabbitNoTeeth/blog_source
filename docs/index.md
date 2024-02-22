@@ -15,3 +15,7 @@ footer: 刘新冬 | RabbitNoTeeth@163.com | 微信 RabbiNoTeeth
 ---
 
 # Hello VuePress
+<div style="display: flex;flex-direction: row;">
+    <div style="flex: 1">asd</div>
+    <div style="flex: 1">bbb</div>
+</div>
