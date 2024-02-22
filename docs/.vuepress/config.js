@@ -19,13 +19,15 @@ module.exports = {
         sidebar: {
             '/docker/': [
                 {
-                    title: 'docker',   // 必要的
-                    collapsable: false, // 可选的, 默认值是 true,
-                    sidebarDepth: 2,    // 可选的, 默认值是 1
+                    title: 'docker',   // 标题
+                    collapsable: false, // 是否可收起
+                    sidebarDepth: 2,    // 展开层级
                     children: [
                         ['/docker/', '简介'],
-                        ['/docker/基本概念', '基本概念'],
-                        ['/docker/常用命令', '常用命令']
+                        ['/docker/default/基本概念', '基本概念'],
+                        ['/docker/default/常用命令', '常用命令'],
+                        ['/docker/default/docker_run参数详解', 'docker run 参数详解'],
+                        ['/docker/default/Dockerfile', 'Dockerfile']
                     ]
                 }
             ]
