@@ -25,8 +25,8 @@ module.exports = {
                     children: [
                         ['/docker/', '简介'],
                         ['/docker/default/基本概念', '基本概念'],
-                        ['/docker/default/常用命令', '常用命令'],
-                        ['/docker/default/docker_run参数详解', 'docker run 参数详解'],
+                        ['/docker/default/常用操作', '常用操作'],
+                        ['/docker/default/docker_run详解', 'docker run 详解'],
                         ['/docker/default/Dockerfile', 'Dockerfile']
                     ]
                 }

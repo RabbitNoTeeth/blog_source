@@ -386,14 +386,14 @@ RUN ["executable", "param1", "param2"]     # exec格式
 
 ## CMD
 
-为容器执行提供默认行为（即容器启动后要执行的命令）。可以声明多个 `CMD` 指令，但是只有最后一个 `CMD` 指令生效。
+定义容器启动后要执行的命令。可以声明多个 `CMD` 指令，但是只有最后一个生效。
 
 <br/>
 
 **格式：**
 
 ```
-CMD ["executable","param1","param2"]     # exec格式
+CMD ["executable","param1","param2"]     # exec格式（官方推荐）
 ```
 
 或者
@@ -404,4 +404,184 @@ CMD command param1 param2    # shell格式
 
 <br/>
 
-示例及注意事项参考 `RUN` 指令
+**示例：** 
+
+- shell格式
+
+  ```
+  CMD mkdir -p /home/aaa
+  ```
+
+- exec格式
+
+  ```
+  CMD ["mkdir", "-p", "/home/aaa"]
+  ```
+
+  
+
+<br/>
+
+
+
+`CMD` 定义的命令可以被 `docker run` 命令的参数覆盖。
+
+例如我们在Dockerfile文件中定义：
+
+```
+CMD ["/bin/echo", "i am jack"] 
+```
+
+构建镜像并运行容器：
+
+```
+docker build -t myimage && docker run myimage
+```
+
+控制台输出内容为：
+
+```
+i am jack
+```
+
+如果我们 `docker run` 命令中指定参数，如下：
+
+```
+docker runmyimage /bin/bash
+```
+
+那么命令行将不再有输出，也就是 `CMD` 定义的命令被覆盖了。
+
+
+
+<br/>
+
+**注意：**
+
+- 使用exec格式时，要处理好字符的转义问题，如：
+
+  ```
+  CMD ["c:\windows\system32\tasklist.exe"]
+  ```
+
+  上述声明存在字符未转义问题，正确写法为：
+
+  ```
+  CMD ["c:\\windows\\system32\\tasklist.exe"]
+  ```
+
+
+- 使用shell格式时，可通过 `\` 来实现换行，如：
+
+  ```
+  CMD /bin/bash -c 'source $HOME/.bashrc; \
+  echo $HOME'
+  ```
+
+  等价于
+
+  ```
+  CMD /bin/bash -c 'source $HOME/.bashrc; echo $HOME'
+  ```
+
+  
+
+## ENTRYPOINT
+
+定义容器启动后要执行的命令。可以声明多个 `ENTRYPOINT` 指令，但是只有最后一个生效。
+
+<br/>
+
+**格式：**
+
+```
+ENTRYPOINT ["executable","param1","param2"]     # exec格式（官方推荐）
+```
+
+或者
+
+```
+ENTRYPOINT command param1 param2    # shell格式
+```
+
+<br/>
+
+**示例：** 
+
+- shell格式
+
+  ```
+  ENTRYPOINT mkdir -p /home/aaa
+  ```
+
+- exec格式
+
+  ```
+  ENTRYPOINT ["mkdir", "-p", "/home/aaa"]
+  ```
+
+
+
+
+<br/>
+
+当使用exec格式时， 可以通过 `docker run` 命令的 `--entrypoint` 参数来覆盖  `ENTRYPOINT` 指令定义的命令，如：
+
+```
+docker run myimage --entrypoint /bin/bash
+```
+
+此时， `ENTRYPOINT` 指令定义的命令将会被覆盖成 /bin/bash
+
+
+
+<br/>
+
+**`ENTRYPOINT` 与 `CMD` 的区别：**
+
+ `ENTRYPOINT` 可以使容器表现得更像是一个可执行程序，例如在Dockerfile文件中定义：
+
+```
+ENTRYPOINT ["/bin/echo"]
+```
+
+构建后执行：
+
+```
+docker run myimage "this is a test"
+```
+
+控制台将输出：
+
+```
+this is a test
+```
+
+看，这个容器就像是一个echo程序一样。
+
+<br/>
+
+通常， `ENTRYPOINT` 和  `CMD` 搭配使用， `ENTRYPOINT` 来定义固定不变的命令，而 `CMD` 来定义可以变化的命令。
+
+例如我们在编写构建一个nodejs服务镜像的Dockerfile文件，有如下定义：
+
+```
+ENTRYPOINT ["node"]
+CMD ["/home/app1/index.js"]
+```
+
+构建并运行：
+
+```
+docker build -t myimage && docker run myimage
+```
+
+那么容器将会启动nodejs服务，并加载 `/home/app1/index.js` 文件。
+
+如果我们想要在容器启动时，加载 `/home/app2` 下的 `index.js` 文件，我们可以执行如下命令：
+
+```
+docker run myimage /home/app2/index.js
+```
+
+此时，容器启动后将加载 `/home/app2/index.js` 文件。
