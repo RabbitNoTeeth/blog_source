@@ -1,21 +1,22 @@
 ---
 home: true
-heroText: Hero 标题
-tagline: Hero 副标题
-actionText: 快速上手 →asd
-actionLink: /zh/guide/
-features:
-- title: 简洁至上
-  details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-- title: Vue驱动
-  details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
+heroText: null
+tagline: 好记性不如烂笔头，记录日常的学习笔记、开发遇到的问题以及解决方法。
 footer: 刘新冬 | RabbitNoTeeth@163.com | 微信 RabbiNoTeeth
 ---
 
-# Hello VuePress
-<div style="display: flex;flex-direction: row;">
-    <div style="flex: 1">asd</div>
-    <div style="flex: 1">bbb</div>
+## 我写了这些 ↓
+
+<div class="home_card_container">
+    <div class="home_card">
+        <dic class="home_card_title">
+            docker
+        </dic>
+        <dic class="home_card_content">
+            简单介绍 + 常用操作 + 特殊场景处理，足够应对绝大部分的应用部署需求了。
+        </dic>
+        <dic class="home_card_foot">
+            <a href="/docker">让我看看 →</a>
+        </dic>
+    </div>
 </div>
