@@ -10,6 +10,17 @@ footer: 刘新冬 | RabbitNoTeeth@163.com | 微信 RabbiNoTeeth
 <div class="home_card_container">
     <div class="home_card">
         <dic class="home_card_title">
+            vert.x
+        </dic>
+        <dic class="home_card_content">
+            非常nice的java工具集，可以用它来快速构建java应用，如果你想体验没有spring的世界，它是不二之选。
+        </dic>
+        <dic class="home_card_foot">
+            <a href="/vertx">让我看看 →</a>
+        </dic>
+    </div>
+    <div class="home_card">
+        <dic class="home_card_title">
             docker
         </dic>
         <dic class="home_card_content">

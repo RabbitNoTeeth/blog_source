@@ -17,6 +17,16 @@ module.exports = {
             }
         ],
         sidebar: {
+            '/vertx/': [
+                {
+                    title: 'vertx',   // 标题
+                    collapsable: false, // 是否可收起
+                    sidebarDepth: 2,    // 展开层级
+                    children: [
+                        ['/vertx/', '简介']
+                    ]
+                }
+            ],
             '/docker/': [
                 {
                     title: 'docker',   // 标题
