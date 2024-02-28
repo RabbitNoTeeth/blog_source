@@ -23,7 +23,8 @@ module.exports = {
                     collapsable: false, // 是否可收起
                     sidebarDepth: 2,    // 展开层级
                     children: [
-                        ['/vertx/', '简介']
+                        ['/vertx/', '简介'],
+                        ['/vertx/default/idleTimeout', 'idleTimeout, 一个可以将服务器干废的参数']
                     ]
                 }
             ],
