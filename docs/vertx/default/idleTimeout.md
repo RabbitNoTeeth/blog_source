@@ -1,5 +1,5 @@
 ---
-title: idleTimeout
+title: idleTimeout，一个可以将服务器干废的参数
 description: vertx idleTimeout详解
 lang: zh-CN
 ---
