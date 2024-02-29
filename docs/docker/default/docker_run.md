@@ -1,5 +1,5 @@
 ---
-title: docker run 命令详解
+title: docker run 详解
 description: docker run 参数详解，docker容器后台运行，docker容器磁盘挂载，docker容器端口映射，docker容器网络设置
 lang: zh-CN
 ---

@@ -37,7 +37,7 @@ module.exports = {
                         ['/docker/', '简介'],
                         ['/docker/default/基本概念', '基本概念'],
                         ['/docker/default/常用操作', '常用操作'],
-                        ['/docker/default/docker_run详解', 'docker run 详解'],
+                        ['/docker/default/docker_run', 'docker run 详解'],
                         ['/docker/default/Dockerfile', 'Dockerfile']
                     ]
                 }
