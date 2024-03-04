@@ -24,7 +24,8 @@ module.exports = {
                     sidebarDepth: 2,    // 展开层级
                     children: [
                         ['/vertx/', '简介'],
-                        ['/vertx/default/idleTimeout', 'idleTimeout, 一个可以将服务器干废的参数']
+                        ['/vertx/default/idleTimeout', 'idleTimeout, 一个可以将服务器干废的参数'],
+                        ['/vertx/default/在vertx中使用虚拟线程.md', '在vertx中使用虚拟线程']
                     ]
                 }
             ],
