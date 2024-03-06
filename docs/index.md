@@ -21,6 +21,17 @@ footer: 刘新冬 | RabbitNoTeeth@163.com | 微信 RabbiNoTeeth
     </div>
     <div class="home_card">
         <dic class="home_card_title">
+            nginx
+        </dic>
+        <dic class="home_card_content">
+            用过的都懂，神器！神器！！神器！！！
+        </dic>
+        <dic class="home_card_foot">
+            <a href="/nginx">让我看看 →</a>
+        </dic>
+    </div>
+    <div class="home_card">
+        <dic class="home_card_title">
             docker
         </dic>
         <dic class="home_card_content">

@@ -12,6 +12,8 @@ module.exports = {
                 text: '我写了这些 ↓',
                 ariaLabel: 'development',
                 items: [
+                    {text: 'vertx', link: '/vertx/'},
+                    {text: 'nginx', link: '/nginx/'},
                     {text: 'docker', link: '/docker/'}
                 ]
             }
@@ -40,6 +42,17 @@ module.exports = {
                         ['/docker/default/常用操作', '常用操作'],
                         ['/docker/default/docker_run', 'docker run 详解'],
                         ['/docker/default/Dockerfile', 'Dockerfile']
+                    ]
+                }
+            ],
+            '/nginx/': [
+                {
+                    title: 'nginx',   // 标题
+                    collapsable: false, // 是否可收起
+                    sidebarDepth: 2,    // 展开层级
+                    children: [
+                        ['/nginx/', '简介'],
+                        ['/nginx/default/获取免费SSL证书', '获取免费SSL证书']
                     ]
                 }
             ]
