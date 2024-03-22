@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "vuepress dev docs --temp .temp",
-    "build": "vuepress build docs"
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && vuepress build docs",
+    "build-win": "set NODE_OPTIONS=--openssl-legacy-provider && vuepress build docs"
   },
   "author": "",
   "license": "ISC",

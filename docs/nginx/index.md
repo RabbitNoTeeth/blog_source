@@ -4,4 +4,4 @@ description: nginx简介，nginx是什么，什么是nginx，nginx是干什么�
 lang: zh-CN
 ---
 
-nginx
+神器，不需要解释！

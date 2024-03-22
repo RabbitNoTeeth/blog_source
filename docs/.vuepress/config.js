@@ -52,7 +52,8 @@ module.exports = {
                     sidebarDepth: 2,    // 展开层级
                     children: [
                         ['/nginx/', '简介'],
-                        ['/nginx/default/获取免费SSL证书', '获取免费SSL证书']
+                        ['/nginx/default/获取免费SSL证书', '获取免费SSL证书'],
+                        ['/nginx/default/代理TCP|UDP', '代理TCP/UDP']
                     ]
                 }
             ]
