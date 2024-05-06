@@ -52,7 +52,7 @@ service nfs start
 mkdir /app/share
 ```
 
-注意，在配置nfs时， `/etc/exports` 文件中的 `/home/share` 与此处的共享目录不是一回事，前者是共享文件的实际存储目录，而后者是机器A和B在使用时的共享目录，即文章开头中的 `/app/share` 。
+注意，在配置nfs时， `/etc/exports` 文件中的 `/home/share` 与此处的共享目录不是一回事，前者是共享文件的实际存储目录，而后者是机器A共享给B的目录，即文章开头中的 `/app/share` 。
 
 ## 挂载nfs
 在机器B中，挂载nfs
