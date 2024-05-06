@@ -14,7 +14,8 @@ module.exports = {
                 items: [
                     {text: 'vertx', link: '/vertx/'},
                     {text: 'nginx', link: '/nginx/'},
-                    {text: 'docker', link: '/docker/'}
+                    {text: 'docker', link: '/docker/'},
+                    {text: 'linux', link: '/linux/'}
                 ]
             }
         ],
@@ -54,6 +55,17 @@ module.exports = {
                         ['/nginx/', '简介'],
                         ['/nginx/default/获取免费SSL证书', '获取免费SSL证书'],
                         ['/nginx/default/代理TCP|UDP', '代理TCP/UDP']
+                    ]
+                }
+            ],
+            '/linux/': [
+                {
+                    title: 'linux',   // 标题
+                    collapsable: false, // 是否可收起
+                    sidebarDepth: 2,    // 展开层级
+                    children: [
+                        ['/linux/', '简介'],
+                        ['/linux/default/搭建nfs共享存储', '搭建nfs共享存储']
                     ]
                 }
             ]
