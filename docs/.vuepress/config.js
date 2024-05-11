@@ -54,7 +54,8 @@ module.exports = {
                     children: [
                         ['/nginx/', '简介'],
                         ['/nginx/default/获取免费SSL证书', '获取免费SSL证书'],
-                        ['/nginx/default/代理TCP|UDP', '代理TCP/UDP']
+                        ['/nginx/default/代理TCP|UDP', '代理TCP/UDP'],
+                        ['/nginx/default/反向代理获取客户端真实IP', '反向代理获取客户端真实IP']
                     ]
                 }
             ],
