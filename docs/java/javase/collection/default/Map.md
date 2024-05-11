@@ -4,13 +4,11 @@ description: JavaSE-Map
 lang: zh-CN
 ---
 
-# 1 总览
-
 ![](/img/java/javase/collection/3.1.png)
 
 
 
-# 1 HashMap
+## 1. HashMap
 
 以下内容引自 http://www.importnew.com/20386.html，原文写的非常好，此处搬运了一下。
 
@@ -20,7 +18,7 @@ lang: zh-CN
 
 
 
-## 1.1 存储结构
+### 1.1 存储结构
 
 从结构实现来讲，HashMap是数组+链表+红黑树（JDK1.8增加了红黑树部分）实现的，如下图所示。
 
@@ -86,11 +84,11 @@ size这个字段其实很好理解，就是HashMap中实际存在的键值对数
 
 
 
-## 1.2 功能实现
+### 1.2 功能实现
 
 HashMap的内部功能实现很多，本文主要从根据key获取哈希桶数组索引位置、put方法的详细执行、扩容过程三个具有代表性的点深入展开讲解。
 
-### 1.2.1 确定哈希桶数组索引位置
+#### 1.2.1 确定哈希桶数组索引位置
 
 不管增加、删除、查找键值对，定位到哈希桶数组的位置都是很关键的第一步。前面说过HashMap的数据结构是数组和链表的结合，所以我们当然希望这个HashMap里面的元素位置尽量分布均匀些，尽量使得每个位置上的元素数量只有一个，那么当我们用hash算法求得这个位置的时候，马上就可以知道对应位置的元素就是我们要的，不用遍历链表，大大优化了查询的效率。HashMap定位数组索引位置，直接决定了hash方法的离散性能。先看看源码的实现(方法一+方法二):
 
@@ -122,7 +120,7 @@ static int indexFor(int h, int length) {  //jdk1.7的源码，jdk1.8没有这个
 
 
 
-### 1.2.2 分析HashMap的put方法
+#### 1.2.2 分析HashMap的put方法
 
 HashMap的put方法执行过程可以通过下图来理解，自己有兴趣可以去对比源码更清楚地研究学习。
 
@@ -202,7 +200,7 @@ JDK1.8HashMap的put方法源码如下:
 
 
 
-### 1.2.3 扩容机制
+#### 1.2.3 扩容机制
 
 扩容(resize)就是重新计算容量，向HashMap对象里不停的添加元素，而HashMap对象内部的数组无法装载更多的元素时，对象就需要扩大数组的长度，以便能装入更多的元素。当然Java里的数组是无法自动扩容的，方法是使用一个新的数组代替已有的容量小的数组，就像我们用一个小桶装水，如果想装更多的水，就得换大水桶。
 
@@ -355,11 +353,11 @@ final Node<K,V>[] resize() {
 
 
 
-## 1.3 JDK1.8与JDK1.7的性能对比
+### 1.3 JDK1.8与JDK1.7的性能对比
 
 HashMap中，如果key经过hash算法得出的数组索引位置全部不相同，即Hash算法非常好，那样的话，getKey方法的时间复杂度就是O(1)，如果Hash算法技术的结果碰撞非常多，假如Hash算极其差，所有的Hash算法结果得出的索引位置一样，那样所有的键值对都集中到一个桶中，或者在一个链表中，或者在一个红黑树中，时间复杂度分别为O(n)和O(lgn)。 鉴于JDK1.8做了多方面的优化，总体性能优于JDK1.7，下面我们从两个方面用例子证明这一点。
 
-### 1.3.1 Hash较均匀的情况
+#### 1.3.1 Hash较均匀的情况
 
 为了便于测试，我们先写一个类Key，如下：
 
@@ -446,7 +444,7 @@ static void test(int mapSize) {
 
 
 
-### 1.3.2 Hash极不均匀的情况
+#### 1.3.2 Hash极不均匀的情况
 
 假设我们又一个非常差的Key，它们所有的实例都返回相同的hashCode值。这是使用HashMap最坏的情况。代码修改如下： 
 
@@ -470,7 +468,7 @@ class Key implements Comparable<Key> {
 
 
 
-## 1.4 小结
+### 1.4 小结
 
 (1) 扩容是一个特别耗性能的操作，所以当程序员在使用HashMap的时候，估算map的大小，初始化的时候给一个大致的数值，避免map进行频繁的扩容。
 
@@ -482,18 +480,18 @@ class Key implements Comparable<Key> {
 
 
 
-# 2 ConcurrentHashMap
+## 2. ConcurrentHashMap
 
 文章内容引自 http://blog.csdn.net/zly9923218/article/details/51420561
 
-## 2.1 数据结构
+### 2.1 数据结构
 
 1.8 版本的 ConcurrentHashMap 不再采用 Segment 实现，而是改用 Node，Node 是一个链表的结构，每个节点可以引用到下一个节点(next)。
 Node是最核心的内部类，包装了key-value键值对，所有插入ConcurrentHashMap的数据都包装在这里面。
 
 它与HashMap中的定义很相似，但是有一些差别它对value和next属性设置了volatile同步锁，它不允许调用setValue方法直接改变Node的value域，它增加了find方法辅助map.get()方法。
 
-### 2.2.1 Node
+#### 2.2.1 Node
 
 ```
 /**
@@ -552,7 +550,7 @@ static class Node<K,V> implements Map.Entry<K,V> {
 
 
 
-### 2.2.2 TreeNode
+#### 2.2.2 TreeNode
 
 树节点类，另外一个核心的数据结构。
 当链表长度过长的时候，会转换为TreeNode。
@@ -561,13 +559,13 @@ static class Node<K,V> implements Map.Entry<K,V> {
 
 
 
-### 2.2.3 TreeBin
+#### 2.2.3 TreeBin
 
 这个类并不负责包装用户的key、value信息，而是包装的很多TreeNode节点。它代替了TreeNode的根节点，也就是说在实际的ConcurrentHashMap“数组”中，存放的是TreeBin对象，而不是TreeNode对象，这是与HashMap的区别。另外这个类还带有了读写锁。
 
 
 
-### 2.2.4 ForwardingNode
+#### 2.2.4 ForwardingNode
 
 一个用于连接两个table的节点类。它包含一个nextTable指针，用于指向下一张表。而且这个节点的key value next指针全部为null，它的hash值为-1。这里面定义的find的方法是从nextTable里进行查询节点，而不是以自身为头节点进行查找。
 
@@ -610,7 +608,7 @@ static final class ForwardingNode<K,V> extends Node<K,V> {
 
 
 
-## 2.2 构造函数
+### 2.2 构造函数
 
 ```
 public ConcurrentHashMap() {
@@ -654,7 +652,7 @@ public ConcurrentHashMap() {
 
 
 
-## 2.3 关键属性
+### 2.3 关键属性
 
 ```
 public class ConcurrentHashMap<K,V> extends AbstractMap<K,V>
@@ -700,7 +698,7 @@ public class ConcurrentHashMap<K,V> extends AbstractMap<K,V>
 
 
 
-## 2.4 初始化函数initTable
+### 2.4 初始化函数initTable
 
 对于ConcurrentHashMap来说，调用它的构造方法仅仅是设置了一些参数而已。而整个table的初始化是在向ConcurrentHashMap中插入元素的时候发生的。如调用put、computeIfAbsent、compute、merge等方法的时候，调用时机是检查table==null。
 
@@ -753,9 +751,9 @@ private final Node<K,V>[] initTable() {
 
 
 
-## 2.5 put插入函数
+### 2.5 put插入函数
 
-### 2.5.1 put和1.7版本的改变
+#### 2.5.1 put和1.7版本的改变
 
 对应的 put 操作也不再使用 ReentrantLock 使用，而是采用 CAS + 同步的方式实现
 
@@ -767,7 +765,7 @@ private final Node<K,V>[] initTable() {
 
 
 
-### 2.5.2 put操作步骤
+#### 2.5.2 put操作步骤
 
 根据hash值计算这个新插入的点在table中的位置i。
 
@@ -882,7 +880,7 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
 
 
 
-## 2.6 红黑树转换
+### 2.6 红黑树转换
 
 在putVal函数中，treeifyBin是在链表长度达到一定阈值（8）后转换成红黑树的函数。
 但是并不是直接转换，而是进行一次容量判断，如果容量没有达到转换的要求，直接进行扩容操作并返回；如果满足条件才将链表的结构转换为TreeBin ，这与HashMap不同的是，它并没有把TreeNode直接放入红黑树，而是利用了TreeBin这个小容器来封装所有的TreeNode。
@@ -919,7 +917,7 @@ private final void treeifyBin(Node<K,V>[] tab, int index) {
 
 
 
-## 2.7 检测是否扩容addCount方法
+### 2.7 检测是否扩容addCount方法
 
 put方法结尾处调用了addCount方法，把当前ConcurrentHashMap的元素个数+1这个方法一共做了两件事,更新baseCount的值，检测是否进行扩容
 
@@ -970,7 +968,7 @@ private final void addCount(long x, int check) {
 
 
 
-## 2.8 协助扩容函数helpTransfer
+### 2.8 协助扩容函数helpTransfer
 
 这个方法被调用的时候，当前ConcurrentHashMap一定已经有了nextTable对象，首先拿到这个nextTable对象，调用transfer方法。回看上面的transfer方法可以看到，当本线程进入扩容方法的时候会直接进入复制阶段。
 
@@ -1003,7 +1001,7 @@ final Node<K,V>[] helpTransfer(Node<K,V>[] tab, Node<K,V> f) {
 
 
 
-## 2.9 get方法
+### 2.9 get方法
 
 给定一个key来确定value的时候，必须满足两个条件 key相同 hash值相同，对于节点可能在链表或树上的情况，需要分别去查找。
 
@@ -1038,12 +1036,12 @@ public V get(Object key) {
 
 
 
-## 2.10 扩容方法 transfer
+### 2.10 扩容方法 transfer
 
 支持多线程进行扩容操作，并没有加锁
 这样做的目的不仅仅是为了满足concurrent的要求，而是希望利用并发处理去减少扩容带来的时间影响
 
-### 2.10.1 扩容整体操作
+#### 2.10.1 扩容整体操作
 
 1. 构建nextTable
    第一部分是构建一个nextTable，它的容量是原来的两倍，这个操作是单线程完成的。这个单线程的保证是通过RESIZE_STAMP_SHIFT这个常量经过一次运算来保证的。
@@ -1053,7 +1051,7 @@ public V get(Object key) {
 
 
 
-### 2.10.2 扩容并发实现
+#### 2.10.2 扩容并发实现
 
 - 单线程
   大体思想就是遍历、复制的过程。首先根据运算得到需要遍历的次数i，然后利用tabAt方法获得i位置的元素：
@@ -1236,7 +1234,7 @@ public V get(Object key) {
 
 
 
-# 3 WeakHashMap
+## 3. WeakHashMap
 
 文章内容引自: http://www.importnew.com/27358.html 和 http://ifeve.com/weakhashmap/
 
@@ -1260,13 +1258,13 @@ WeakHashMap与HashMap的异同点：
 
 
 
-## 3.1 引用
+### 3.1 引用
 
 “引用”，在Java中指的是一个对象对另一对象的使用（指向）。WeakHashMap中的键的类型是WeakReference，在Java中还有另外两种引用：强引用（Strong Reference）、软引用（Soft Reference）。
 
 
 
-### 3.1.1 强引用
+#### 3.1.1 强引用
 
 被强引用指向的对象，绝对不会被垃圾收集器回收。
 
@@ -1274,7 +1272,7 @@ WeakHashMap与HashMap的异同点：
 
 
 
-### 3.1.2 软引用
+#### 3.1.2 软引用
 
 被[SoftReference](http://duqicauc.gitee.io/2017/11/10/weakhashmap-in-java/)指向的对象**可能**会被垃圾收集器回收，但是只有在JVM内存不够的情况下才会回收。
 
@@ -1288,7 +1286,7 @@ prime = null;
 
 
 
-### 3.1.3 弱引用
+#### 3.1.3 弱引用
 
 当一个对象仅仅被WeakReference引用时，在**下个垃圾收集周期**时候该对象就会被回收。
 
@@ -1304,7 +1302,7 @@ prime = null;
 
 
 
-## 3.2 关于Entry<K,V>
+### 3.2 关于Entry<K,V>
 
 和HashMap一样，WeakHashMap也是用一个Entry实体来构造里面所有的元素的，但是这个Entry却和HashMap的不同，它是弱引用。
 
@@ -1318,7 +1316,7 @@ private static class Entry<K,V> extends WeakReference<Object> implements Map.Ent
 
 
 
-## 3.3 ReferenceQueue
+### 3.3 ReferenceQueue
 
 queue是用来存放那些被jvm清除的entry的引用，因为WeakHashMap使用的是弱引用，所以一旦gc，就会有key键被清除，所以会把entry加入到queue中。在WeakHashMap中加入queue的目的，就是为expungeStaleEntries所用。
 
@@ -1337,7 +1335,7 @@ Entry(Object key, V value,
 
 
 
-## 3.4 expungeStaleEntries方法
+### 3.4 expungeStaleEntries方法
 
 在WeakHashMap中，由jvm回收的，仅仅是Entry的key部分，所以一旦jvm强制回收，那么这些key都会为null，再通过私有的`expungeStaleEntries` 方法，把value也置为null，并且把`size--` 。
 
@@ -1385,7 +1383,7 @@ Entry(Object key, V value,
 
 
 
-# 4 EnumMap
+## 4. EnumMap
 
 EnumMap是以枚举类型作为key的map实现，专门用来存储以枚举类型作为key的键值对，性能优越。非同步、允许value为null、但是key值不可为null。
 
@@ -1393,7 +1391,7 @@ EnumMap对于key键的处理，不同于典型的HashMap通过key的hash值来�
 
 
 
-## 4.1 内部实现
+### 4.1 内部实现
 
 ```
 public class EnumMap<K extends Enum<K>, V> extends AbstractMap<K, V>
@@ -1410,7 +1408,7 @@ private transient int size = 0;
 
 
 
-## 4.2 构造函数
+### 4.2 构造函数
 
 ```
 // 通过指定key键的类型创建
@@ -1433,7 +1431,7 @@ public EnumMap(Map<K, ? extends V> m) {
 
 
 
-## 4.3 put()
+### 4.3 put()
 
 ```
 public V put(K key, V value) {
@@ -1449,7 +1447,7 @@ public V put(K key, V value) {
 
 
 
-## 4.4 remove()
+### 4.4 remove()
 
 ```
 public V remove(Object key) {
@@ -1466,13 +1464,13 @@ public V remove(Object key) {
 
 
 
-# 5 IdentityHashMap
+## 5. IdentityHashMap
 
 IdentityHashMap是一个基于hash，**key值可重复**的map实现。允许存入null、非同步。其内部实现原理与HashMap完全不同，而对于key值的可重复的定义在于只有key完全相同(同一个引用的对象)时，才会覆盖，在文章后面会附上一个测试示例。
 
 
 
-## 5.1 内部实现
+### 5.1 内部实现
 
 ```
 //数组容器默认大小
@@ -1492,7 +1490,7 @@ transient int modCount;
 
 
 
-## 5.2 构造参数
+### 5.2 构造参数
 
 ```
 public IdentityHashMap() {
@@ -1506,7 +1504,7 @@ private void init(int initCapacity) {
 
 
 
-## 5.3 put()
+### 5.3 put()
 
 ```
 public V put(K key, V value) {
@@ -1547,7 +1545,7 @@ public V put(K key, V value) {
 
 
 
-## 5.4 remove()
+### 5.4 remove()
 
 ```
 public V remove(Object key) {
@@ -1582,7 +1580,7 @@ public V remove(Object key) {
 
 
 
-## 5.5 示例
+### 5.5 示例
 
 简单看下IdentityHashMap和HashMap在使用时的不同之处：
 
@@ -1617,14 +1615,14 @@ identityHashMap2 : {10=bbb}
 
 
 
-# 6 TreeMap
+## 6. TreeMap
 
 TreeMap 是一个有序的key-value集合，它是通过红黑树实现的。本章节将主要讲解TreeMap
 中方法fixAfterInsertion是如何在每次添加节点之后修复二叉树到平衡状态的。
 
 
 
-## 6.1 红黑树节点的数据类型
+### 6.1 红黑树节点的数据类型
 
 ```
 //红黑树根节点
@@ -1644,7 +1642,7 @@ static final class Entry<K,V> implements Map.Entry<K,V> {
 
 
 
-## 6.2 红黑树的特性约束
+### 6.2 红黑树的特性约束
 
 通过这些特性来对红黑树进行平衡调整，实现了完美平衡的二叉树：
 
@@ -1654,9 +1652,9 @@ static final class Entry<K,V> implements Map.Entry<K,V> {
 
 
 
-## 6.3 put()
+### 6.3 put()
 
-### 6.3.1 put()
+#### 6.3.1 put()
 
 ```
 public V put(K key, V value) {
@@ -1724,7 +1722,7 @@ put方法的逻辑与普通二叉树的添加思路基本相同，唯一的不�
 
 
 
-### 6.3.2 fixAfterInsertion()
+#### 6.3.2 fixAfterInsertion()
 
 在其while循环中，包含了六种二叉树状态，每种状态在下面都有图例说明
 
@@ -1801,7 +1799,7 @@ private void fixAfterInsertion(Entry<K,V> x) {
 
 
 
-### 6.3.3 左旋转与右旋转
+#### 6.3.3 左旋转与右旋转
 
 此处先不放源码，通过两张动态图可以很直观地理解这两种操作
 
@@ -1815,15 +1813,15 @@ private void fixAfterInsertion(Entry<K,V> x) {
 
 ![img](/img/java/javase/collection/4.8.gif)
 
-### 6.3.4 示例
+#### 6.3.4 示例
 
 ![img](/img/java/javase/collection/4.9.png)
 
 
 
-## 6.4 remove()
+### 6.4 remove()
 
-### 6.4.1 寻找节点后继
+#### 6.4.1 寻找节点后继
 
 对于一棵二叉查找树，给定节点t，其后继（树种比大于t的最小的那个元素）可以通过如下方式找到：
 
@@ -1865,7 +1863,7 @@ static <K,V> TreeMap.Entry<K,V> successor(Entry<K,V> t) {
 
 
 
-### 6.4.2 remove()
+#### 6.4.2 remove()
 
 remove(Object key)的作用是删除key值对应的entry，该方法首先通过上文中提到的getEntry(Object key)方法找到key值对应的entry，然后调用deleteEntry(Entry<K,V> entry)删除对应的entry。由于删除操作会改变红黑树的结构，有可能破坏红黑树的约束条件，因此有可能要进行调整。
 由于红黑树是一棵增强版的二叉查找树，红黑树的删除操作跟普通二叉查找树的删除操作也就非常相似，唯一的区别是红黑树在节点删除之后可能需要进行调整。
@@ -2003,15 +2001,15 @@ private void fixAfterDeletion(Entry<K,V> x) {
 
 
 
-# 7 ConcurrentSkipListMap
+## 7. ConcurrentSkipListMap
 
 ConcurrentSkipListMap提供了一种线程安全(基于CAS实现)的并发访问的排序映射表。内部是SkipList（跳表）结构实现，在理论上能够O(log(n))时间内完成查找、插入、删除操作。
 
 
 
-## 7.1 跳表
+### 7.1 跳表
 
-### 7.1.1 为什么选择跳表
+#### 7.1.1 为什么选择跳表
 
 目前经常使用的平衡数据结构有：B树，红黑树，AVL树，Splay Tree, Treep等。
 
@@ -2021,7 +2019,7 @@ ConcurrentSkipListMap提供了一种线程安全(基于CAS实现)的并发访问
 
 
 
-### 7.1.2 有序表的搜索
+#### 7.1.2 有序表的搜索
 
 考虑一个有序表：
 
@@ -2047,7 +2045,7 @@ ConcurrentSkipListMap提供了一种线程安全(基于CAS实现)的并发访问
 这里元素不多，体现不出优势，如果元素足够多，这种索引结构就能体现出优势来了。
 
 
-### 7.1.3 跳表的结构
+#### 7.1.3 跳表的结构
 
 下面的结构是就是跳表： 
 
@@ -2066,7 +2064,7 @@ ConcurrentSkipListMap提供了一种线程安全(基于CAS实现)的并发访问
 - 每个节点包含两个指针，一个指向同一链表中的下一个元素，一个指向下面一层的元素。 
   
 
-### 7.1.4 跳表的搜索
+#### 7.1.4 跳表的搜索
 
 ![img](/img/java/javase/collection/4.16.jpg)
 
@@ -2100,7 +2098,7 @@ find(x)
 
 
 
-### 7.1.5 跳表的插入
+#### 7.1.5 跳表的插入
 
 先确定该元素要占据的层数 K（采用丢硬币的方式，这完全是随机的）
 然后在 Level 1 ... Level K 各个层的链表都插入元素。
@@ -2118,7 +2116,7 @@ find(x)
 
 
 
-### 7.1.6 丢硬币决定 K
+#### 7.1.6 丢硬币决定 K
 
 插入元素的时候，元素所占有的层数完全是随机的，通过一下随机算法产生：
 
@@ -2137,19 +2135,19 @@ int random_level()
 显然随机变量 K 满足参数为 p = 1/2 的几何分布，K 的期望值 E[K] = 1/p = 2. 就是说，各个元素的层数，期望值是 2 层。
 
 
-### 7.1.7 跳表的高度 
+#### 7.1.7 跳表的高度 
 
 n 个元素的跳表，每个元素插入的时候都要做一次实验，用来决定元素占据的层数 K，跳表的高度等于这 n 次实验中产生的最大 K。
 
 
 
-### 7.1.8 跳表的空间复杂度分析
+#### 7.1.8 跳表的空间复杂度分析
 
 根据上面的分析，每个元素的期望高度为 2， 一个大小为 n 的跳表，其节点数目的期望值是 2n。
 
 
 
-### 7.1.9 跳表的删除
+#### 7.1.9 跳表的删除
 
 在各个层中找到包含 x 的节点，使用标准的 delete from list 方法删除该节点。
 例子：删除 71
@@ -2158,7 +2156,7 @@ n 个元素的跳表，每个元素插入的时候都要做一次实验，用来
 
 
 
-### 7.1.10 SkipSet实现示例
+#### 7.1.10 SkipSet实现示例
 
 ```
 /** 
@@ -2324,9 +2322,9 @@ public class SkipSet<E extends Comparable<? super E>> {
 
 
 
-## 7.2 ConcurrentSkipListMap源码
+### 7.2 ConcurrentSkipListMap源码
 
-### 7.2.1 数据结构
+#### 7.2.1 数据结构
 
 ConcurrentSkipListMap主要用到了Node和Index两种节点的存储方式，通过volatile关键字实现了并发的操作
 
@@ -2347,7 +2345,7 @@ static class Index<K,V> {
 
 
 
-### 7.2.2 查找
+#### 7.2.2 查找
 
 通过SkipList的方式进行查找操作：（下图以“查找91”进行说明：）
 
@@ -2410,7 +2408,7 @@ private V doGet(Object okey) {
 
 
 
-### 7.2.2 删除
+#### 7.2.2 删除
 
 通过SkipList的方式进行删除操作：（下图以“删除23”进行说明：）
 
@@ -2470,7 +2468,7 @@ public V remove(Object key) {
 
 
 
-### 7.2.3 插入
+#### 7.2.3 插入
 
 通过SkipList的方式进行插入操作：（下图以“添加55”的两种情况，进行说明：）
 

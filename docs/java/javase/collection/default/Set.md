@@ -4,21 +4,19 @@ description: JavaSE-Set
 lang: zh-CN
 ---
 
-# 1 总览
-
 ![](/img/java/javase/collection/1.1.png)
 
 
 
-# 2 TreeSet
+## 1. TreeSet
 
 TreeSet作为一个可排序的set集合，可以按照一定的排序规则对set中保存的元素进行排序。（由于TreeSet是基于TreeMap实现的，所以本章节只是简单讲解，在TreeMap中会进行详细讲解）
 
 
 
-## 2.1 API
+### 1.1 API
 
-### 2.1.1 构造函数
+#### 1.1.1 构造函数
 
 ```
 public TreeSet() {
@@ -34,7 +32,7 @@ public TreeSet(Comparator<? super E> comparator) {
 
 
 
-### 2.1.2 add添加元素
+#### 1.1.2 add添加元素
 
 ```
 private static final Object PRESENT = new Object();
@@ -48,19 +46,19 @@ public boolean add(E e) {
 
 
 
-### 2.1.3 其他
+#### 1.1.3 其他
 
 TreeSet的add、remove等方法，内部全部调用的是TreeMap的相关方法，再查看TreeMap源码，我们可以看到，TreeMap是非同步的，如果在并发访问中map被修改，那么会抛出ConcurrentModificationException异常。
 
 
 
-# 3 EnumSet
+## 2. EnumSet
 
 EnumSet 是一个与枚举类型一起使用的专用 Set 实现。枚举set中所有元素都必须来自单个枚举类型（即必须是同类型，且该类型是Enum的子类）。EnumSet有两个子类:RegularEnumSet和JumboEnumSet.
 
 
 
-## 3.1 API
+### 2.1 API
 
 创建EnumSet
 
@@ -117,10 +115,7 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 为什么noneOf内部会判断enum内部元素是否大于64并且创建不同的子类呢？这就涉及到EnumSet的实现原理。
 
 
-
-## 3.2 内部原理
-
-### 3.2.1 RegularEnumSet
+### 2.2 RegularEnumSet
 
 查看RegularEnumSet源码,发现其对内部元素的维护是通过一个long来维护的:
 
@@ -148,7 +143,7 @@ RegularEnumSet内部维护了一个long值，我们知道，long类型有64个bi
 
 
 
-### 3.2.2 JumboEnumSet
+### 2.3 JumboEnumSet
 
 那么，当枚举元素个数大于64时，JumboEnumSet是如何做的呢?
 查看源码:
@@ -175,7 +170,7 @@ public boolean add(E e) {
 
 
 
-### 3.2.3 性能
+### 2.4 性能
 
 因为EnumSet内部对元素的维护是通过long的bit位，而不是数组或者链表，所以其性能很优秀，下面是一个小示例，来比较下EnumSet和HashSet的性能。
 
@@ -238,13 +233,13 @@ HashSet:90ms
 
 
 
-# 4 HashSet
+## 3. HashSet
 
 HashSet，基于散列的元素不可重复集合，不保证元素在集合中的顺序，允许存入null值，其有两个常见的子类：LinkedHashSet 和 JobStateReasons。
 
 
 
-## 4.1 内部实现
+### 3.1 内部实现
 
 在HashSet源码中，我们可以看到：
 
@@ -261,10 +256,7 @@ public HashSet() {
 很明显，HashSet是通过内部维护一个HashMap来实现的，其增加和删除的方法也是对内部map的调用。(关于HashMap的详解请查看相关Map体系的文章，此处不加赘述)
 
 
-
-## 4.2 子类
-
-### 4.2.1 LinkedHashSet
+### 3.2 LinkedHashSet
 
 在HashSet中,有一个非public访问权限的构造方法:
 
@@ -297,14 +289,14 @@ public LinkedHashSet(Collection<? extends E> c) {
 
 
 
-### 4.2.2 JobStateReasons
+### 3.3 JobStateReasons
 
 JobStateReasons 类是打印属性类，它是一个枚举值集合，提供了有关作业当前状态的额外信息，即扩充作业的 JobState 属性值的信息。
 上述是Jdk API中对JobStateReasons的定义，由于在日常开发中并没有使用到过，所以此处先留白，等后面如果有了进一步的了解再补充。
 
 
 
-# 5 ConcurrentSkipListSet
+## 4. ConcurrentSkipListSet
 
 ConcurrentSkipListSet是线程安全的有序的集合，适用于高并发的场景。
 
@@ -328,13 +320,13 @@ ConcurrentSkipListSet的增删等方法，也是对内部ConcurrentSkipListMap�
 
 
 
-# 6 CopyOnWriteArraySet
+## 5. CopyOnWriteArraySet
 
 CopyOnWriteArraySet，是一个基于”写复制”机制的元素有序但不可重复的Set集合，是线程安全的。何为”写复制”呢？就是当集合在写入一个新元素时，创建一个内部容器的副本，向副本中添加元素，然后将内部容器的引用指向新的容器副本。即每次添加新元素都会创建一个新的内部容器。
 
 
 
-## 6.1 内部实现
+### 5.1 内部实现
 
 ```
 private final CopyOnWriteArrayList<E> al;
@@ -348,9 +340,9 @@ CopyOnWriteArraySet是通过内部维护一个CopyOnWriteArrayList来实现的�
 
 
 
-## 6.2 API
+### 5.2 API
 
-### 6.2.1 add
+#### 5.2.1 add
 
 ```
 public boolean add(E e) {
@@ -366,7 +358,7 @@ public boolean addAll(Collection<? extends E> c) {
 
 
 
-### 6.2.2 addIfAbsent
+#### 5.2.2 addIfAbsent
 
 ```
 public boolean addIfAbsent(E e) {
@@ -402,7 +394,7 @@ private boolean addIfAbsent(E e, Object[] snapshot) {
 
 
 
-### 6.2.3 addAllAbsent
+#### 5.2.3 addAllAbsent
 
 ```
 public int addAllAbsent(Collection<? extends E> c) {

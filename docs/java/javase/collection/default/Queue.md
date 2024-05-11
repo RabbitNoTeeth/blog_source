@@ -4,19 +4,17 @@ description: JavaSE-Queue
 lang: zh-CN
 ---
 
-# 1 总览
-
 ![](/img/java/javase/collection/5.1.png)
 
 
 
-# 2 LinkedBlockingQueue
+## 1. LinkedBlockingQueue
 
 LinkedBlockingQueue是一个基于链表实现的阻塞队列，先进先出顺序，是构建生产者-消费者模式的首选构件。
 
 
 
-## 2.1 内部实现
+### 1.1 内部实现
 
 ```
 /**
@@ -72,7 +70,7 @@ private final Condition notFull = putLock.newCondition();
 
 
 
-## 2.2 构造函数
+### 1.2 构造函数
 
 ```
 /**
@@ -119,7 +117,7 @@ public LinkedBlockingQueue(Collection<? extends E> c) {
 
 
 
-## 2.3 入栈和出栈
+### 1.3 入栈和出栈
 
 ```
 /**
@@ -154,7 +152,7 @@ private E dequeue() {
 
 
 
-## 2.4 put()
+### 1.4 put()
 
 ```
 public void put(E e) throws InterruptedException {
@@ -190,7 +188,7 @@ public void put(E e) throws InterruptedException {
 
 
 
-## 2.5 offer()
+### 1.5 offer()
 
 LinkedBlockingQueue中提供了一个特殊的offer方法，即添加元素时可以指定过期时间，如果在过期时间内，队列未满，添加成功，则返回true；否则，超过规定时间，未添加成功，则返回false。
 
@@ -227,7 +225,7 @@ public boolean offer(E e, long timeout, TimeUnit unit)
 
 
 
-## 2.6 take()
+### 1.6 take()
 
 ```
 public E take() throws InterruptedException {

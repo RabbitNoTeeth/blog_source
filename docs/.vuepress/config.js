@@ -33,12 +33,18 @@ module.exports = {
                     collapsable: false, // 是否可收起
                     sidebarDepth: 2,    // 展开层级
                     children: [
-                        ['/java/javase/collection/', '简介'],
-                        ['/java/javase/collection/default/Collection', 'Collection'],
-                        ['/java/javase/collection/default/List', 'List'],
-                        ['/java/javase/collection/default/Map', 'Map'],
-                        ['/java/javase/collection/default/Queue', 'Queue'],
-                        ['/java/javase/collection/default/Set', 'Set']
+                        {
+                            title: '集合',   // 标题
+                            collapsable: true, // 是否可收起
+                            sidebarDepth: 2,    // 展开层级
+                            children: [
+                                ['/java/javase/collection/default/Collection', 'Collection'],
+                                ['/java/javase/collection/default/List', 'List'],
+                                ['/java/javase/collection/default/Map', 'Map'],
+                                ['/java/javase/collection/default/Queue', 'Queue'],
+                                ['/java/javase/collection/default/Set', 'Set']
+                            ]
+                        }
                     ]
                 }
             ],
@@ -76,7 +82,7 @@ module.exports = {
                     children: [
                         ['/nginx/', '简介'],
                         ['/nginx/default/获取免费SSL证书', '获取免费SSL证书'],
-                        ['/nginx/default/代理TCP|UDP', '代理TCP/UDP'],
+                        ['/nginx/default/反向代理TCP、UDP', '反向代理TCP/UDP'],
                         ['/nginx/default/反向代理获取客户端真实IP', '反向代理获取客户端真实IP']
                     ]
                 }
