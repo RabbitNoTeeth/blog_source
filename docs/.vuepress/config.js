@@ -9,32 +9,54 @@ module.exports = {
         nav: [
             {text: '首页', link: '/'},
             {
-                text: '我写了这些 ↓',
-                ariaLabel: 'development',
+                text: 'Java',
+                ariaLabel: 'java',
                 items: [
-                    {text: 'vertx', link: '/vertx/'},
-                    {text: 'nginx', link: '/nginx/'},
-                    {text: 'docker', link: '/docker/'},
-                    {text: 'linux', link: '/linux/'}
+                    {text: 'JavaSE', link: '/java/javase/'},
+                    {text: 'Vert.x', link: '/java/vertx/'}
+                ]
+            },
+            {
+                text: '其他',
+                ariaLabel: 'other',
+                items: [
+                    {text: 'Nginx', link: '/nginx/'},
+                    {text: 'Docker', link: '/docker/'},
+                    {text: 'Linux', link: '/linux/'}
                 ]
             }
         ],
         sidebar: {
-            '/vertx/': [
+            '/java/javase/': [
                 {
-                    title: 'vertx',   // 标题
+                    title: 'JavaSE',   // 标题
                     collapsable: false, // 是否可收起
                     sidebarDepth: 2,    // 展开层级
                     children: [
-                        ['/vertx/', '简介'],
-                        ['/vertx/default/idleTimeout', 'idleTimeout, 一个可以将服务器干废的参数'],
-                        ['/vertx/default/在vertx中使用虚拟线程.md', '在vertx中使用虚拟线程']
+                        ['/java/javase/collection/', '简介'],
+                        ['/java/javase/collection/default/Collection', 'Collection'],
+                        ['/java/javase/collection/default/List', 'List'],
+                        ['/java/javase/collection/default/Map', 'Map'],
+                        ['/java/javase/collection/default/Queue', 'Queue'],
+                        ['/java/javase/collection/default/Set', 'Set']
+                    ]
+                }
+            ],
+            '/java/vertx/': [
+                {
+                    title: 'Vert.x',   // 标题
+                    collapsable: false, // 是否可收起
+                    sidebarDepth: 2,    // 展开层级
+                    children: [
+                        ['/java/vertx/', '简介'],
+                        ['/java/vertx/default/idleTimeout', 'idleTimeout, 一个可以将服务器干废的参数'],
+                        ['/java/vertx/default/在vertx中使用虚拟线程', '在vertx中使用虚拟线程']
                     ]
                 }
             ],
             '/docker/': [
                 {
-                    title: 'docker',   // 标题
+                    title: 'Docker',   // 标题
                     collapsable: false, // 是否可收起
                     sidebarDepth: 2,    // 展开层级
                     children: [
@@ -48,7 +70,7 @@ module.exports = {
             ],
             '/nginx/': [
                 {
-                    title: 'nginx',   // 标题
+                    title: 'Nginx',   // 标题
                     collapsable: false, // 是否可收起
                     sidebarDepth: 2,    // 展开层级
                     children: [
@@ -61,7 +83,7 @@ module.exports = {
             ],
             '/linux/': [
                 {
-                    title: 'linux',   // 标题
+                    title: 'Linux',   // 标题
                     collapsable: false, // 是否可收起
                     sidebarDepth: 2,    // 展开层级
                     children: [

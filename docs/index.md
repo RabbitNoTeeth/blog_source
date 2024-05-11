@@ -5,12 +5,20 @@ tagline: null
 footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth
 ---
 
-## 我写了这些 ↓
+## Java
 
 <div class="home_article_card_container">
-    <a class="home_article_card" href="/vertx">
+    <a class="home_article_card" href="/java/javase">
+        JavaSE
+    </a>
+    <a class="home_article_card" href="/java/vertx">
         Vert.x
     </a>
+</div>
+
+## 其他
+
+<div class="home_article_card_container">
     <a class="home_article_card" href="/nginx">
         Nginx
     </a>
