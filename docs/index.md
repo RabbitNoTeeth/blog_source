@@ -16,6 +16,14 @@ footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth
     </a>
 </div>
 
+#### 数据库
+
+<div class="home_article_card_container">
+    <a class="home_article_card" href="/database/postgresql/default/安装/">
+        PostgreSQL
+    </a>
+</div>
+
 #### 其他
 
 <div class="home_article_card_container">

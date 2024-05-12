@@ -17,6 +17,13 @@ module.exports = {
                 ]
             },
             {
+                text: '数据库',
+                ariaLabel: 'database',
+                items: [
+                    {text: 'PostgreSQL', link: '/database/postgresql/default/安装/'}
+                ]
+            },
+            {
                 text: '其他',
                 ariaLabel: 'other',
                 items: [
@@ -95,6 +102,24 @@ module.exports = {
                         ['/java/vertx/', '简介'],
                         ['/java/vertx/default/idleTimeout', 'idleTimeout, 一个可以将服务器干废的参数'],
                         ['/java/vertx/default/在vertx中使用虚拟线程', '在vertx中使用虚拟线程']
+                    ]
+                }
+            ],
+            '/database/postgresql/': [
+                {
+                    title: 'PostgreSQL',   // 标题
+                    collapsable: false, // 是否可收起
+                    sidebarDepth: 2,    // 展开层级
+                    children: [
+                        ['/database/postgresql/default/安装', '安装'],
+                        ['/database/postgresql/default/备份与恢复', '备份与恢复'],
+                        ['/database/postgresql/default/远程连接中断问题', '远程连接中断问题'],
+                        ['/database/postgresql/default/like查询优化', 'like查询优化'],
+                        ['/database/postgresql/default/创建自增序列', '创建自增序列'],
+                        ['/database/postgresql/default/自增变量导致插入失败问题', '自增变量导致插入失败问题'],
+                        ['/database/postgresql/default/垂直分表', '垂直分表'],
+                        ['/database/postgresql/default/两表关联更新', '两表关联更新'],
+                        ['/database/postgresql/default/常用函数', '常用函数']
                     ]
                 }
             ],
