@@ -19,7 +19,7 @@ footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth
 #### 数据库
 
 <div class="home_article_card_container">
-    <a class="home_article_card" href="/database/postgresql/default/%E5%AE%89%E8%A3%85">
+    <a class="home_article_card" href="/database/postgresql/default/install">
         PostgreSQL
     </a>
 </div>

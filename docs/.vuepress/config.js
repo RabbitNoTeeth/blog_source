@@ -20,7 +20,7 @@ module.exports = {
                 text: '数据库',
                 ariaLabel: 'database',
                 items: [
-                    {text: 'PostgreSQL', link: '/database/postgresql/default/安装'}
+                    {text: 'PostgreSQL', link: '/database/postgresql/default/install'}
                 ]
             },
             {
@@ -111,7 +111,7 @@ module.exports = {
                     collapsable: false, // 是否可收起
                     sidebarDepth: 2,    // 展开层级
                     children: [
-                        ['/database/postgresql/default/安装', '安装'],
+                        ['/database/postgresql/default/install', '安装'],
                         ['/database/postgresql/default/备份与恢复', '备份与恢复'],
                         ['/database/postgresql/default/远程连接中断问题', '远程连接中断问题'],
                         ['/database/postgresql/default/like查询优化', 'like查询优化'],
