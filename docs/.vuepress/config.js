@@ -44,6 +44,36 @@ module.exports = {
                                 ['/java/javase/collection/default/Queue', 'Queue'],
                                 ['/java/javase/collection/default/Set', 'Set']
                             ]
+                        },
+                        {
+                            title: '并发',   // 标题
+                            collapsable: true, // 是否可收起
+                            sidebarDepth: 2,    // 展开层级
+                            children: [
+                                ['/java/javase/concurrent/default/设计线程安全的类', '设计线程安全的类'],
+                                ['/java/javase/concurrent/default/基础构建模块', '基础构建模块'],
+                                ['/java/javase/concurrent/default/任务执行', '任务执行'],
+                                ['/java/javase/concurrent/default/取消与关闭', '取消与关闭'],
+                                ['/java/javase/concurrent/default/线程池的使用', '线程池的使用'],
+                                ['/java/javase/concurrent/default/死锁', '死锁'],
+                                ['/java/javase/concurrent/default/性能与可伸缩性', '性能与可伸缩性'],
+                                ['/java/javase/concurrent/default/显式锁', '显式锁'],
+                                ['/java/javase/concurrent/default/构建自定义的同步工具', '构建自定义的同步工具'],
+                                ['/java/javase/concurrent/default/原子变量与非阻塞同步机制', '原子变量与非阻塞同步机制'],
+                                ['/java/javase/concurrent/default/Executor框架', 'Executor框架'],
+                                ['/java/javase/concurrent/default/Future框架', 'Future框架']
+                            ]
+                        },
+                        {
+                            title: '其他',   // 标题
+                            collapsable: true, // 是否可收起
+                            sidebarDepth: 2,    // 展开层级
+                            children: [
+                                ['/java/javase/other/default/static关键字', 'static关键字'],
+                                ['/java/javase/other/default/泛型机制', '泛型机制'],
+                                ['/java/javase/other/default/解决hash冲突的常用方法', '解决hash冲突的常用方法'],
+                                ['/java/javase/other/default/三元运算符与类型转换', '三元运算符与类型转换']
+                            ]
                         }
                     ]
                 }
