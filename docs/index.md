@@ -8,7 +8,7 @@ footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth
 #### Java
 
 <div class="home_article_card_container">
-    <a class="home_article_card" href="/java/javase/collection/default/Collection/">
+    <a class="home_article_card" href="/java/javase/collection/default/Collection">
         JavaSE
     </a>
     <a class="home_article_card" href="/java/vertx">
@@ -19,7 +19,7 @@ footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth
 #### 数据库
 
 <div class="home_article_card_container">
-    <a class="home_article_card" href="/database/postgresql/default/安装/">
+    <a class="home_article_card" href="/database/postgresql/default/安装">
         PostgreSQL
     </a>
 </div>

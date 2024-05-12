@@ -12,24 +12,24 @@ module.exports = {
                 text: 'Java',
                 ariaLabel: 'java',
                 items: [
-                    {text: 'JavaSE', link: '/java/javase/collection/default/Collection/'},
-                    {text: 'Vert.x', link: '/java/vertx/'}
+                    {text: 'JavaSE', link: '/java/javase/collection/default/Collection'},
+                    {text: 'Vert.x', link: '/java/vertx'}
                 ]
             },
             {
                 text: '数据库',
                 ariaLabel: 'database',
                 items: [
-                    {text: 'PostgreSQL', link: '/database/postgresql/default/安装/'}
+                    {text: 'PostgreSQL', link: '/database/postgresql/default/安装'}
                 ]
             },
             {
                 text: '其他',
                 ariaLabel: 'other',
                 items: [
-                    {text: 'Nginx', link: '/nginx/'},
-                    {text: 'Docker', link: '/docker/'},
-                    {text: 'Linux', link: '/linux/'}
+                    {text: 'Nginx', link: '/nginx'},
+                    {text: 'Docker', link: '/docker'},
+                    {text: 'Linux', link: '/linux'}
                 ]
             }
         ],
