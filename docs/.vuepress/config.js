@@ -12,7 +12,7 @@ module.exports = {
                 text: 'Java',
                 ariaLabel: 'java',
                 items: [
-                    {text: 'JavaSE', link: '/java/javase/'},
+                    {text: 'JavaSE', link: '/java/javase/collection/default/Collection/'},
                     {text: 'Vert.x', link: '/java/vertx/'}
                 ]
             },
@@ -35,7 +35,7 @@ module.exports = {
                     children: [
                         {
                             title: '集合',   // 标题
-                            collapsable: true, // 是否可收起
+                            collapsable: false, // 是否可收起
                             sidebarDepth: 2,    // 展开层级
                             children: [
                                 ['/java/javase/collection/default/Collection', 'Collection'],
@@ -47,7 +47,7 @@ module.exports = {
                         },
                         {
                             title: '并发',   // 标题
-                            collapsable: true, // 是否可收起
+                            collapsable: false, // 是否可收起
                             sidebarDepth: 2,    // 展开层级
                             children: [
                                 ['/java/javase/concurrent/default/设计线程安全的类', '设计线程安全的类'],
@@ -66,13 +66,21 @@ module.exports = {
                         },
                         {
                             title: '其他',   // 标题
-                            collapsable: true, // 是否可收起
+                            collapsable: false, // 是否可收起
                             sidebarDepth: 2,    // 展开层级
                             children: [
                                 ['/java/javase/other/default/static关键字', 'static关键字'],
                                 ['/java/javase/other/default/泛型机制', '泛型机制'],
                                 ['/java/javase/other/default/解决hash冲突的常用方法', '解决hash冲突的常用方法'],
                                 ['/java/javase/other/default/三元运算符与类型转换', '三元运算符与类型转换']
+                            ]
+                        },
+                        {
+                            title: 'IO',   // 标题
+                            collapsable: false, // 是否可收起
+                            sidebarDepth: 2,    // 展开层级
+                            children: [
+                                ['/java/javase/io/default/NIO概述', 'NIO概述']
                             ]
                         }
                     ]
