@@ -12,24 +12,24 @@ module.exports = {
                 text: 'Java',
                 ariaLabel: 'java',
                 items: [
-                    {text: 'JavaSE', link: '/java/javase/collection/default/Collection'},
-                    {text: 'Vert.x', link: '/java/vertx'}
+                    {text: 'JavaSE', link: '/java/javase/'},
+                    {text: 'Vert.x', link: '/java/vertx/'}
                 ]
             },
             {
                 text: '数据库',
                 ariaLabel: 'database',
                 items: [
-                    {text: 'PostgreSQL', link: '/database/postgresql/default/install'}
+                    {text: 'PostgreSQL', link: '/database/postgresql/'}
                 ]
             },
             {
                 text: '其他',
                 ariaLabel: 'other',
                 items: [
-                    {text: 'Nginx', link: '/nginx'},
-                    {text: 'Docker', link: '/docker'},
-                    {text: 'Linux', link: '/linux'}
+                    {text: 'Nginx', link: '/nginx/'},
+                    {text: 'Docker', link: '/docker/'},
+                    {text: 'Linux', link: '/linux/'}
                 ]
             }
         ],
@@ -40,6 +40,7 @@ module.exports = {
                     collapsable: false, // 是否可收起
                     sidebarDepth: 2,    // 展开层级
                     children: [
+                        ['/java/javase/', '简介'],
                         {
                             title: '集合',   // 标题
                             collapsable: false, // 是否可收起
@@ -111,6 +112,7 @@ module.exports = {
                     collapsable: false, // 是否可收起
                     sidebarDepth: 2,    // 展开层级
                     children: [
+                        ['/database/postgresql/', '简介'],
                         ['/database/postgresql/default/install', '安装'],
                         ['/database/postgresql/default/备份与恢复', '备份与恢复'],
                         ['/database/postgresql/default/远程连接中断问题', '远程连接中断问题'],

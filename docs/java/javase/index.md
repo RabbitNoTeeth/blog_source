@@ -4,4 +4,4 @@ description: JavaSE
 lang: zh-CN
 ---
 
-JavaSE
+各种基础知识、学习记录。

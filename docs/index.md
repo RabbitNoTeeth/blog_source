@@ -8,10 +8,10 @@ footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth
 #### Java
 
 <div class="home_article_card_container">
-    <a class="home_article_card" href="/java/javase/collection/default/Collection">
+    <a class="home_article_card" href="/java/javase/">
         JavaSE
     </a>
-    <a class="home_article_card" href="/java/vertx">
+    <a class="home_article_card" href="/java/vertx/">
         Vert.x
     </a>
 </div>
@@ -19,7 +19,7 @@ footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth
 #### 数据库
 
 <div class="home_article_card_container">
-    <a class="home_article_card" href="/database/postgresql/default/install">
+    <a class="home_article_card" href="/database/postgresql/">
         PostgreSQL
     </a>
 </div>
@@ -27,13 +27,13 @@ footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth
 #### 其他
 
 <div class="home_article_card_container">
-    <a class="home_article_card" href="/nginx">
+    <a class="home_article_card" href="/nginx/">
         Nginx
     </a>
-    <a class="home_article_card" href="/docker">
+    <a class="home_article_card" href="/docker/">
         Docker
     </a>
-    <a class="home_article_card" href="/linux">
+    <a class="home_article_card" href="/linux/">
         Linux
     </a>
 </div>
