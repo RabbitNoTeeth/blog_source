@@ -24,6 +24,13 @@ module.exports = {
                 ]
             },
             {
+                text: '深度学习',
+                ariaLabel: 'deeplearning',
+                items: [
+                    {text: '深度学习入门', link: '/deeplearning/'}
+                ]
+            },
+            {
                 text: '其他',
                 ariaLabel: 'other',
                 items: [
@@ -122,6 +129,16 @@ module.exports = {
                         ['/database/postgresql/default/垂直分表', '垂直分表'],
                         ['/database/postgresql/default/两表关联更新', '两表关联更新'],
                         ['/database/postgresql/default/常用函数', '常用函数']
+                    ]
+                }
+            ],
+            '/deeplearning/': [
+                {
+                    title: '深度学习入门',   // 标题
+                    collapsable: false, // 是否可收起
+                    sidebarDepth: 2,    // 展开层级
+                    children: [
+                        ['/deeplearning/', '什么是深度学习']
                     ]
                 }
             ],
