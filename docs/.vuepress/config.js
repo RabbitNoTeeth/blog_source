@@ -27,7 +27,7 @@ module.exports = {
                 text: '深度学习',
                 ariaLabel: 'deeplearning',
                 items: [
-                    {text: '深度学习入门', link: '/deeplearning/'}
+                    {text: '深度学习入门', link: '/deeplearning/base/'}
                 ]
             },
             {
@@ -132,13 +132,14 @@ module.exports = {
                     ]
                 }
             ],
-            '/deeplearning/': [
+            '/deeplearning/base/': [
                 {
                     title: '深度学习入门',   // 标题
                     collapsable: false, // 是否可收起
                     sidebarDepth: 2,    // 展开层级
                     children: [
-                        ['/deeplearning/', '什么是深度学习']
+                        ['/deeplearning/base/', '什么是深度学习'],
+                        ['/deeplearning/base/default/神经网络的数学基础', '神经网络的数学基础']
                     ]
                 }
             ],

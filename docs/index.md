@@ -27,7 +27,7 @@ footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth
 #### 深度学习
 
 <div class="home_article_card_container">
-    <a class="home_article_card" href="/deeplearning/">
+    <a class="home_article_card" href="/deeplearning/base/">
         深度学习入门
     </a>
 </div>
