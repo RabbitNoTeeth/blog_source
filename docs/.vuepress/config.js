@@ -139,7 +139,8 @@ module.exports = {
                     sidebarDepth: 2,    // 展开层级
                     children: [
                         ['/deeplearning/base/', '什么是深度学习'],
-                        ['/deeplearning/base/default/神经网络的数学基础', '神经网络的数学基础']
+                        ['/deeplearning/base/default/神经网络的数学基础', '神经网络的数学基础'],
+                        ['/deeplearning/base/default/张量运算', '神经网络的“齿轮”：张量运算']
                     ]
                 }
             ],
