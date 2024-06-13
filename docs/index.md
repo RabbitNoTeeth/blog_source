@@ -2,7 +2,7 @@
 home: true
 heroText: null
 tagline: null
-footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth
+footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth | 冀ICP备2024057790号-1 ｜冀公网安备13020302001378号
 ---
 
 #### Java
