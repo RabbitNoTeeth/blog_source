@@ -11,6 +11,9 @@ footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth | 冀ICP备202405
     <a class="home_article_card" href="/java/javase/">
         JavaSE
     </a>
+    <a class="home_article_card" href="/java/effectivejava/">
+        Effective Java
+    </a>
     <a class="home_article_card" href="/java/vertx/">
         Vert.x
     </a>
@@ -24,13 +27,18 @@ footer: 邮箱：RabbitNoTeeth@163.com | 微信：RabbiNoTeeth | 冀ICP备202405
     </a>
 </div>
 
-#### 深度学习
+[//]: # (#### 深度学习)
 
-<div class="home_article_card_container">
-    <a class="home_article_card" href="/deeplearning/base/">
-        深度学习入门
-    </a>
-</div>
+[//]: # ()
+[//]: # (<div class="home_article_card_container">)
+
+[//]: # (    <a class="home_article_card" href="/deeplearning/base/">)
+
+[//]: # (        深度学习入门)
+
+[//]: # (    </a>)
+
+[//]: # (</div>)
 
 #### 其他
 

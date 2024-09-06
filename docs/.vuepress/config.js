@@ -13,6 +13,7 @@ module.exports = {
                 ariaLabel: 'java',
                 items: [
                     {text: 'JavaSE', link: '/java/javase/'},
+                    {text: 'Effective Java', link: '/java/effectivejava/'},
                     {text: 'Vert.x', link: '/java/vertx/'}
                 ]
             },
@@ -23,13 +24,13 @@ module.exports = {
                     {text: 'PostgreSQL', link: '/database/postgresql/'}
                 ]
             },
-            {
-                text: '深度学习',
-                ariaLabel: 'deeplearning',
-                items: [
-                    {text: '深度学习入门', link: '/deeplearning/base/'}
-                ]
-            },
+            // {
+            //     text: '深度学习',
+            //     ariaLabel: 'deeplearning',
+            //     items: [
+            //         {text: '深度学习入门', link: '/deeplearning/base/'}
+            //     ]
+            // },
             {
                 text: '其他',
                 ariaLabel: 'other',
@@ -98,6 +99,24 @@ module.exports = {
                                 ['/java/javase/io/default/NIO概述', 'NIO概述']
                             ]
                         }
+                    ]
+                }
+            ],
+            '/java/effectivejava/': [
+                {
+                    title: 'Effective Java',   // 标题
+                    collapsable: false, // 是否可收起
+                    sidebarDepth: 2,    // 展开层级
+                    children: [
+                        ['/java/effectivejava/', '简介'],
+                        ['/java/effectivejava/default/01_考虑用静态工厂方法代替构造器', '考虑用静态工厂方法代替构造器'],
+                        ['/java/effectivejava/default/02_遇到多个构造器参数时考虑用构建器', '遇到多个构造器参数时考虑用构建器'],
+                        ['/java/effectivejava/default/03_用私有构造器或者枚举类型强化Singleton属性', '用私有构造器或者枚举类型强化Singleton属性'],
+                        ['/java/effectivejava/default/04_通过私有构造器强化不可实例化的能力', '通过私有构造器强化不可实例化的能力'],
+                        ['/java/effectivejava/default/05_避免创建不必要的对象', '避免创建不必要的对象'],
+                        ['/java/effectivejava/default/06_消除过期的对象引用', '消除过期的对象引用'],
+                        ['/java/effectivejava/default/07_避免使用终结方法', '避免使用终结方法'],
+                        ['/java/effectivejava/default/08_覆盖equals时请遵守通用约定', '覆盖equals时请遵守通用约定'],
                     ]
                 }
             ],
