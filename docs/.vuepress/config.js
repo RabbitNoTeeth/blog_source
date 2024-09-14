@@ -117,6 +117,12 @@ module.exports = {
                         ['/java/effectivejava/default/06_消除过期的对象引用', '消除过期的对象引用'],
                         ['/java/effectivejava/default/07_避免使用终结方法', '避免使用终结方法'],
                         ['/java/effectivejava/default/08_覆盖equals时请遵守通用约定', '覆盖equals时请遵守通用约定'],
+                        ['/java/effectivejava/default/09_建议始终覆盖toString', '建议始终覆盖toString'],
+                        ['/java/effectivejava/default/10_谨慎地覆盖clone', '谨慎地覆盖clone'],
+                        ['/java/effectivejava/default/11_考虑实现Comparable接口', '考虑实现Comparable接口'],
+                        ['/java/effectivejava/default/12_使类和成员的可访问性最小化', '使类和成员的可访问性最小化'],
+                        ['/java/effectivejava/default/13_使可变性最小化', '使可变性最小化'],
+                        ['/java/effectivejava/default/14_复合优先于继承', '复合优先于继承'],
                     ]
                 }
             ],
