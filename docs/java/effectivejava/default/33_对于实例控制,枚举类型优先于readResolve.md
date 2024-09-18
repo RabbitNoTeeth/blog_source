@@ -1,3 +1,9 @@
+---
+title: 对于实例控制,枚举类型优先于readResolve
+description: 对于实例控制,枚举类型优先于readResolve
+lang: zh-CN
+---
+
 **考虑下面的一个单例模式:**
 
 ```

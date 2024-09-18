@@ -1,3 +1,9 @@
+---
+title: 保护性地编写readObject方法
+description: 保护性地编写readObject方法
+lang: zh-CN
+---
+
 **在之前的文章中，我们通过保护性拷贝实现了这样的一个不可变类Period：**
 
 ```

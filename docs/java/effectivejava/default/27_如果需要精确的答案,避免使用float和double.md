@@ -1,6 +1,13 @@
+---
+title: 如果需要精确的答案,避免使用float和double
+description: 如果需要精确的答案,避免使用float和double
+lang: zh-CN
+---
+
 float和double是为了在广泛的数值范围内提供**较为精确的快速近似计算**而设计的，它们并没有提供完全精确地结果，所以不应该被用于需要精确结果的场合。float和double尤其不适合用于货币计算，因为要让一个float或者double精确的表示0.1是不可能的。
 
 **一个典型示例:**
+
 假如，你的口袋里有1美元，货架上有一排糖果，价格分别为10美分、20美分、30美分...一直到1美元这十种糖果，现在让你从第一个开始购买，一直到无法继续购买，计算最后能买到几颗糖果和剩下多少钱? 
 
 ```
@@ -29,6 +36,7 @@ public static void main(String[] args) {
 
 
 **使用BigDecimal, int 或者 long 进行货币计算**
+
 下面是使用BigDecimal来修正代码清单1中的错误: 
 
 ```
@@ -82,7 +90,7 @@ public static void main(String[] args) {
 剩余钱数: 0
 ```
 
-
+<br/>
 
 **小结:**
 

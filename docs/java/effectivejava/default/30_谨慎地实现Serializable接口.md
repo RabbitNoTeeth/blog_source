@@ -1,10 +1,14 @@
-[TOC]
+---
+title: 谨慎地实现Serializable接口
+description: 谨慎地实现Serializable接口
+lang: zh-CN
+---
 
 对于序列化，大多数人可能存在一种误解：认为在java中可以很简单的实现序列化，只需要 implements Serializable即可。但是实际情况却并没有我们想象的那样简单。
 
 在设计一个要实现序列化的类时，我们必须明确实现序列话会带来哪些影响，以及是否能接受这些影响，并且如何将这些影响带来的负面效果降低到最小。
 
-# 1 实现Serializable的代价
+## 1. 实现Serializable的代价
 
 1. 降低了”改变这个类的实现”的灵活性。
 
@@ -19,7 +23,7 @@
 
 
 
-# 2 实现Serializable接口的一些建议:
+## 2. 实现Serializable接口的一些建议:
 
 1. 为了继承而设计的类应该尽可能少地去实现Serializable接口，用户的接口也应该尽可能少地实现Serializable接口。
 
