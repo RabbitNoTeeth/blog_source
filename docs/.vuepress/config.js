@@ -7,39 +7,7 @@ module.exports = {
     themeConfig: {
         logo: '/img/logo.png',
         nav: [
-            {text: '首页', link: '/'},
-            {
-                text: 'Java',
-                ariaLabel: 'java',
-                items: [
-                    {text: 'JavaSE', link: '/java/javase/'},
-                    {text: 'Effective Java', link: '/java/effectivejava/'},
-                    {text: 'Vert.x', link: '/java/vertx/'}
-                ]
-            },
-            {
-                text: '数据库',
-                ariaLabel: 'database',
-                items: [
-                    {text: 'PostgreSQL', link: '/database/postgresql/'}
-                ]
-            },
-            // {
-            //     text: '深度学习',
-            //     ariaLabel: 'deeplearning',
-            //     items: [
-            //         {text: '深度学习入门', link: '/deeplearning/base/'}
-            //     ]
-            // },
-            {
-                text: '其他',
-                ariaLabel: 'other',
-                items: [
-                    {text: 'Nginx', link: '/nginx/'},
-                    {text: 'Docker', link: '/docker/'},
-                    {text: 'Linux', link: '/linux/'}
-                ]
-            }
+            {text: '首页', link: '/'}
         ],
         sidebar: {
             '/java/javase/': [
@@ -177,15 +145,13 @@ module.exports = {
                     ]
                 }
             ],
-            '/deeplearning/base/': [
+            '/deeplearning/tools/': [
                 {
-                    title: '深度学习入门',   // 标题
+                    title: '深度学习-常用工具',   // 标题
                     collapsable: false, // 是否可收起
                     sidebarDepth: 2,    // 展开层级
                     children: [
-                        ['/deeplearning/base/', '什么是深度学习'],
-                        ['/deeplearning/base/default/神经网络的数学基础', '神经网络的数学基础'],
-                        ['/deeplearning/base/default/张量运算', '神经网络的“齿轮”：张量运算']
+                        ['/deeplearning/tools/', '简介']
                     ]
                 }
             ],
