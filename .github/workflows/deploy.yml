@@ -62,12 +62,12 @@ jobs:
         if: runner.os == 'Linux' || runner.os == 'macOS'
         run: |
           pwd
-          cp -r docs/.vuepress/dist/* .
+          cp -r .docs/.vuepress/dist/* .
 
       - name: Copy static files (Windows)
         if: runner.os == 'Windows'
         run: |
-          xcopy /E /I docs\.vuepress\dist\* .\
+          xcopy /E /I .docs\.vuepress\dist\* .\
 
       # 提交并推送到仓库 B
       - name: Commit and push to repository B
