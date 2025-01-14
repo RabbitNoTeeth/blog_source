@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: RabbitNoTeeth/blog  # 将仓库 B 的用户名和仓库名称替换为你的仓库 B
-          token: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 自动生成的 token 进行身份验证
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # 使用 GitHub 自动生成的 token 进行身份验证
           ref: main  # 将仓库 B 设置为你要发布到的分支
           path: deploy-repo
 
@@ -78,12 +78,9 @@ jobs:
       # 提交并推送到仓库 B
       - name: Commit and push to repository B
         run: |
-          echo "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
           cd deploy-repo
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add .
           git commit -m "Deploy vuepress site"
           git push https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/RabbitNoTeeth/blog.git HEAD:main
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
