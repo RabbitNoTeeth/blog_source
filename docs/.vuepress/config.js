@@ -1,4 +1,5 @@
 module.exports = {
+    base: '/blog/',
     title: '刘新冬的博客',
     description: '刘新冬的技术博客，记录学习笔记以及开发中遇到的各种技术问题',
     head: [
