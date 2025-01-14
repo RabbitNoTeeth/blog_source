@@ -61,11 +61,13 @@ jobs:
       - name: Copy static files (Linux/macOS)
         if: runner.os == 'Linux' || runner.os == 'macOS'
         run: |
+          ls -la docs/.vuepress/dist  # 确认文件是否生成
           cp -r docs/.vuepress/dist/* .
 
       - name: Copy static files (Windows)
         if: runner.os == 'Windows'
         run: |
+        
           xcopy /E /I docs\.vuepress\dist\* .\
 
       # 提交并推送到仓库 B
