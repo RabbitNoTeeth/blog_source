@@ -11,7 +11,7 @@ jobs:
 
     steps:
       # 检出当前仓库
-      - name: Checkout repository blog_source
+      - name: Checkout repository A
         uses: actions/checkout@v2
 
       # 设置 Node.js 环境（根据 VuePress 的版本设置正确的 Node.js 版本）
@@ -38,6 +38,19 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 自动生成的 token 进行身份验证
           ref: main  # 将仓库 B 设置为你要发布到的分支
 
+      # 检查仓库B是否为空
+      - name: Check if repository B is empty and create initial commit
+        run: |
+          if [ -z "$(git ls-files)" ]; then
+            echo "Repository B is empty, creating initial commit"
+            echo "# Initial commit" > README.md
+            git add README.md
+            git commit -m "Initial commit"
+            git push origin main
+          else
+            echo "Repository B is not empty, proceeding with deployment"
+          fi
+
       # 清理仓库 B 中的旧文件
       - name: Clean repository B
         run: |
@@ -60,5 +73,5 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add .
-          git commit -m "Deploy blog site"
+          git commit -m "Deploy vuepress site"
           git push origin main
