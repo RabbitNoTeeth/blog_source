@@ -29,7 +29,7 @@ jobs:
       - name: Build VuePress site
         run: |
           npm run build  # 确保 package.json 中有构建命令，通常是 `vuepress build docs`
-          pwd
+          ls -la docs/.vuepress/dist  # 确认文件是否生成
 
       # 检出仓库 B
       - name: Checkout repository B
@@ -61,13 +61,12 @@ jobs:
       - name: Copy static files (Linux/macOS)
         if: runner.os == 'Linux' || runner.os == 'macOS'
         run: |
-          pwd
-          cp -r .docs/.vuepress/dist/* .
+          cp -r docs/.vuepress/dist/* .
 
       - name: Copy static files (Windows)
         if: runner.os == 'Windows'
         run: |
-          xcopy /E /I .docs\.vuepress\dist\* .\
+          xcopy /E /I docs\.vuepress\dist\* .\
 
       # 提交并推送到仓库 B
       - name: Commit and push to repository B
