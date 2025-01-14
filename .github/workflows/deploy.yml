@@ -38,10 +38,12 @@ jobs:
           repository: RabbitNoTeeth/blog  # 将仓库 B 的用户名和仓库名称替换为你的仓库 B
           token: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 自动生成的 token 进行身份验证
           ref: main  # 将仓库 B 设置为你要发布到的分支
+          path: deploy-repo
 
       # 检查仓库B是否为空
       - name: Check if repository B is empty and create initial commit
         run: |
+          cd deploy-repo
           if [ -z "$(git ls-files)" ]; then
             echo "Repository B is empty, creating initial commit"
             echo "# Initial commit" > README.md
@@ -56,23 +58,25 @@ jobs:
       - name: Clean repository B
         run: |
           git rm -rf .
+          cd ..
 
       # 将构建好的静态文件复制到仓库 B 中
       - name: Copy static files (Linux/macOS)
         if: runner.os == 'Linux' || runner.os == 'macOS'
         run: |
           ls -la docs/.vuepress/dist  # 确认文件是否生成
-          cp -r docs/.vuepress/dist/* .
+          cp -r docs/.vuepress/dist/* deploy-repo/
 
       - name: Copy static files (Windows)
         if: runner.os == 'Windows'
         run: |
         
-          xcopy /E /I docs\.vuepress\dist\* .\
+          xcopy /E /I docs\.vuepress\dist\* .\deploy-repo\
 
       # 提交并推送到仓库 B
       - name: Commit and push to repository B
         run: |
+          cd deploy-repo
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add .
