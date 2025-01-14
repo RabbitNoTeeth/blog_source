@@ -1,0 +1,64 @@
+name: Deploy blog
+
+on:
+  push:
+    branches:
+      - main  # 当推送到 `main` 分支时触发工作流（根据你的分支名调整）
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出当前仓库
+      - name: Checkout repository blog_source
+        uses: actions/checkout@v2
+
+      # 设置 Node.js 环境（根据 VuePress 的版本设置正确的 Node.js 版本）
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'  # VuePress 推荐使用的 Node.js 版本，调整为你需要的版本
+
+      # 安装依赖
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # 构建 VuePress 项目
+      - name: Build VuePress site
+        run: |
+          npm run build  # 确保 package.json 中有构建命令，通常是 `vuepress build docs`
+
+      # 检出仓库 B
+      - name: Checkout repository B
+        uses: actions/checkout@v2
+        with:
+          repository: RabbitNoTeeth/blog  # 将仓库 B 的用户名和仓库名称替换为你的仓库 B
+          token: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 自动生成的 token 进行身份验证
+          ref: main  # 将仓库 B 设置为你要发布到的分支
+
+      # 清理仓库 B 中的旧文件
+      - name: Clean repository B
+        run: |
+          git rm -rf .
+
+      # 将构建好的静态文件复制到仓库 B 中
+      - name: Copy static files (Linux/macOS)
+        if: runner.os == 'Linux' || runner.os == 'macOS'
+        run: |
+          cp -r docs/.vuepress/dist/* .
+
+      - name: Copy static files (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          xcopy /E /I docs\.vuepress\dist\* .\
+
+      # 提交并推送到仓库 B
+      - name: Commit and push to repository B
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Deploy blog site"
+          git push origin main
