@@ -8,13 +8,13 @@ footer: Email：RabbitNoTeeth@163.com
 #### Java
 
 <div class="home_article_card_container">
-    <a class="home_article_card" href="/java/javase/">
+    <a class="home_article_card" href="/blog/java/javase/">
         JavaSE
     </a>
-    <a class="home_article_card" href="/java/effectivejava/">
+    <a class="home_article_card" href="/blog/java/effectivejava/">
         Effective Java
     </a>
-    <a class="home_article_card" href="/java/vertx/">
+    <a class="home_article_card" href="/blog/java/vertx/">
         Vert.x
     </a>
 </div>
@@ -22,7 +22,7 @@ footer: Email：RabbitNoTeeth@163.com
 #### 数据库
 
 <div class="home_article_card_container">
-    <a class="home_article_card" href="/database/postgresql/">
+    <a class="home_article_card" href="/blog/database/postgresql/">
         PostgreSQL
     </a>
 </div>
@@ -30,7 +30,7 @@ footer: Email：RabbitNoTeeth@163.com
 #### 深度学习
 
 <div class="home_article_card_container">
-    <a class="home_article_card" href="/deeplearning/tools/">
+    <a class="home_article_card" href="/blog/deeplearning/tools/">
         常用工具
     </a>
 </div>
@@ -39,13 +39,13 @@ footer: Email：RabbitNoTeeth@163.com
 #### 其他
 
 <div class="home_article_card_container">
-    <a class="home_article_card" href="/nginx/">
+    <a class="home_article_card" href="/blog/nginx/">
         Nginx
     </a>
-    <a class="home_article_card" href="/docker/">
+    <a class="home_article_card" href="/blog/docker/">
         Docker
     </a>
-    <a class="home_article_card" href="/linux/">
+    <a class="home_article_card" href="/blog/linux/">
         Linux
     </a>
 </div>
