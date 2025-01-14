@@ -5,6 +5,8 @@ on:
     branches:
       - main  # 当推送到 `main` 分支时触发工作流（根据你的分支名调整）
 
+permissions: write-all
+
 jobs:
   build:
     runs-on: ubuntu-latest
