@@ -152,7 +152,8 @@ module.exports = {
                     collapsable: false, // 是否可收起
                     sidebarDepth: 2,    // 展开层级
                     children: [
-                        ['/deeplearning/tools/', '简介']
+                        ['/deeplearning/tools/', '简介'],
+                        ['/deeplearning/tools/default/conda', 'Conda'],
                     ]
                 }
             ],
