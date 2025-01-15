@@ -6,7 +6,7 @@ lang: zh-CN
 
 **Conda** 是一个跨平台的包管理和环境管理工具。它允许你安装、更新、删除和管理 Python 包以及其他依赖项，同时支持创建和管理多个虚拟环境。与 pip 等传统的包管理工具不同，Conda 既可以管理 Python 包，也可以管理其他语言的包，比如 R、Ruby 和 Lua，甚至是操作系统级别的包。
 
-## 安装
+## 1. 安装
 
 Conda有两个发行版，可以根据需要进行安装。
 
@@ -25,11 +25,11 @@ Conda有两个发行版，可以根据需要进行安装。
 conda --version
 ```
 
-## 环境管理
+## 2. 环境管理
 
 Conda安装成功后，会自动创建一个名称为 `base` 的默认环境，如果不激活其他环境，那么将默认在该环境。
 
-### 1. 创建环境
+### 2.1 创建环境
 
 创建一个名为 `myenv` 的环境，并安装 Python 3.8 版本:
 
@@ -44,7 +44,7 @@ conda create --name myenv python=3.8
 conda create --name myenv python=3.8 numpy pandas
 ```
 
-### 2. 激活环境
+### 2.2 激活环境
 
 创建完环境后，你需要激活环境才能使用其中安装的包。
 
@@ -54,7 +54,7 @@ conda activate myenv
 
 激活后，会看到命令提示符变成了环境名，表示已进入 `myenv` 环境。
 
-### 3. 停用环境
+### 2.3 停用环境
 
 停用当前环境。
 
@@ -64,7 +64,7 @@ conda deactivate
 
 执行后，将退出当前环境并返回默认环境 `base`。
 
-### 4. 查看环境
+### 2.4 查看环境
 
 查看所有的环境，当前激活的环境（会在环境名前面显示 *）。
 
@@ -72,7 +72,7 @@ conda deactivate
 conda env list
 ```
 
-### 5. 删除环境
+### 2.5 删除环境
 
 删除名为 `myenv` 的环境及其所有内容。
 
@@ -80,11 +80,11 @@ conda env list
 conda remove --name myenv --all
 ```
 
-## 包管理
+## 3. 包管理
 
 包管理的所有命令，只在当前激活的环境生效。
 
-### 1. 安装包
+### 3.1 安装包
 
 安装多个包：
 
@@ -98,7 +98,7 @@ conda install numpy pandas matplotlib
 
 针对python包，`conda install`  可能会由于源仓库中资源更新不及时，导致找不到指定的包，这时可以使用 `pip` 命令进行安装，效果和 `conda install` 是一样的。
 
-### 2. 更新包
+### 3.2 更新包
 
 更新指定包：
 
@@ -113,13 +113,13 @@ conda update numpy
 conda update --all
 ```
 
-### 3. 删除包
+### 3.3 删除包
 
 ```
 conda remove numpy
 ```
 
-### 4. 查找包
+### 3.4 查找包
 
 列出所有包：
 
@@ -132,4 +132,51 @@ conda list
 
 ```
 conda search numpy
+```
+
+
+## 4. 常用配置
+
+### 4.1 禁用自动激活
+
+在 Conda 中，默认情况下，当你关闭命令行并重新打开时，系统会自动激活 base 环境。这是因为 Conda 在默认情况下会在启动时自动激活 base 环境。
+
+如果你希望在打开命令行时不自动进入 base 环境，可以禁用 Conda 的自动激活行为。这样，当你打开命令行时，环境不会自动切换到 base，而是保持为系统的默认状态。
+
+```
+conda config --set auto_activate_base false
+```
+
+### 4.2 修改环境和包的安装路径
+
+如果操作系统是Windows，环境和包的默认安装位置通常位于 C:\Users<用户名>\Anaconda3 或 Miniconda3 目录下。可以通过修改配置项来定义安装位置，避免占用过多的c盘空间。
+
+
+修改默认的环境安装路径
+
+```
+conda config --add envs_dirs D:/my_conda_envs
+```
+
+<br/>
+修改默认的包安装路径
+
+```
+conda config --add pkgs_dirs D:/my_conda_pkgs
+```
+
+### 4.3 添加国内源
+
+国内可能无法访问官方源，或者访问较慢，可以添加清华源：
+
+```
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+```
+
+```
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+```
+
+```
+conda config --set show_channel_urls yes
 ```
