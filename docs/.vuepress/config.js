@@ -127,6 +127,17 @@ module.exports = {
                     ]
                 }
             ],
+            '/javascript/tools/': [
+                {
+                    title: 'JavaScript 常用工具',   // 标题
+                    collapsable: false, // 是否可收起
+                    sidebarDepth: 2,    // 展开层级
+                    children: [
+                        ['/javascript/tools/', '简介'],
+                        ['/javascript/tools/default/nvm', 'nvm']
+                    ]
+                }
+            ],
             '/database/postgresql/': [
                 {
                     title: 'PostgreSQL',   // 标题

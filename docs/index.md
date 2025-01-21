@@ -2,7 +2,7 @@
 home: true
 heroText: null
 tagline: null
-footer: Email：RabbitNoTeeth@163.com
+footer: email：RabbitNoTeeth@163.com
 ---
 
 #### Java
@@ -16,6 +16,14 @@ footer: Email：RabbitNoTeeth@163.com
     </a>
     <a class="home_article_card" href="/blog/java/vertx/">
         Vert.x
+    </a>
+</div>
+
+#### JavaScript
+
+<div class="home_article_card_container">
+    <a class="home_article_card" href="/blog/javascript/tools/">
+        常用工具
     </a>
 </div>
 
