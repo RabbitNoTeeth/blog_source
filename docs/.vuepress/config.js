@@ -71,6 +71,17 @@ module.exports = {
                     ]
                 }
             ],
+            '/java/jvm/': [
+                {
+                    title: 'Jvm',   // 标题
+                    collapsable: false, // 是否可收起
+                    sidebarDepth: 2,    // 展开层级
+                    children: [
+                        ['/java/jvm/', '简介'],
+                        ['/java/jvm/default/HotSpotVM架构', 'HotSpotVM架构'],
+                    ]
+                }
+            ],
             '/java/effectivejava/': [
                 {
                     title: 'Effective Java',   // 标题

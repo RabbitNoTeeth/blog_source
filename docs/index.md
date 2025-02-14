@@ -11,6 +11,9 @@ footer: email：RabbitNoTeeth@163.com
     <a class="home_article_card" href="/blog/java/javase/">
         JavaSE
     </a>
+    <a class="home_article_card" href="/blog/java/jvm/">
+        Jvm
+    </a>
     <a class="home_article_card" href="/blog/java/effectivejava/">
         Effective Java
     </a>
