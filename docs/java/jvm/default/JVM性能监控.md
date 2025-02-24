@@ -1,14 +1,16 @@
-[TOC]
+---
+title: JVM性能监控
+description: JVM性能监控
+lang: zh-CN
+---
 
-
-
-# 1 理解GC日志
+## 1. 理解GC日志
 
 HotSpot VM可以将每次GC的数据直接输出成日志，可以以文本方式查看GC统计数据，或者用GUI监控工具查看。
 
 
 
-## 1.1 重要的垃圾收集数据
+### 1.1 重要的垃圾收集数据
 
 1. 当前使用的垃圾收集器。
 2. Java堆的大小。
@@ -28,16 +30,16 @@ HotSpot VM可以将每次GC的数据直接输出成日志，可以以文本方�
 
 
 
-## 1.2 开启GC日志输出
+### 1.2 开启GC日志输出
 
-开启 `–XX:+PrintGCDetails` 可以打印出GC日志，默认是打印在console控制台。
-使用 `–Xloggc:filename` 可以将GC日志直接输出到文件，filename为目标文件名称。
-使用 `–XX:+PrintGCTimeStamps` 可以在GC日志中输出自jvm启动依赖到垃圾收集之间流逝的秒数，可以通过这个时间戳来统计GC频率。
-使用 `–XX:+PrintGCDateStamps` 可以在GC日志中输出标准格式的年月日时分秒形式的时间戳，也可以根据此时间戳来统计GC频率。
+- 开启 `–XX:+PrintGCDetails` 可以打印出GC日志，默认是打印在console控制台。
+- 使用 `–Xloggc:filename` 可以将GC日志直接输出到文件，filename为目标文件名称。
+- 使用 `–XX:+PrintGCTimeStamps` 可以在GC日志中输出自jvm启动依赖到垃圾收集之间流逝的秒数，可以通过这个时间戳来统计GC频率。
+- 使用 `–XX:+PrintGCDateStamps` 可以在GC日志中输出标准格式的年月日时分秒形式的时间戳，也可以根据此时间戳来统计GC频率。
 
 
 
-## 1.3 MinorGC日志
+### 1.3 MinorGC日志
 
 为了便于注释说明，将日志作了分行处理 。
 
@@ -83,7 +85,7 @@ HotSpot VM可以将每次GC的数据直接输出成日志，可以以文本方�
 
 
 
-## 1.4 FullGC日志
+### 1.4 FullGC日志
 
 为了便于注释说明，将日志作了分行处理。
 
@@ -142,7 +144,7 @@ FullGC中值得关注的是垃圾收集之前老年代和元数据区的占用�
 
 
 
-## 1.5 CMS老年代GC日志
+### 1.5 CMS老年代GC日志
 
 当 `–XX:+UseConcMarkSweepGC` 使用CMS收集器时，会自动开启 `–XX:+UserParNewGC`。CMS在老年代的GC日志与上面的FullGC日志有很大的不同.
 
@@ -219,7 +221,7 @@ FullGC中值得关注的是垃圾收集之前老年代和元数据区的占用�
 
 
 
-## 1.6 补充
+### 1.6 补充
 
 使用 `–XX:+PrintGCApplicationConcurrentTime` 和 `–XX:+PrintGCApplicationStoppedTime`，jvm可以报告应用在安全点操作之间的运行时间，以及阻塞java线程的时间。
 利用这俩个选项观察安全点操作有助于理解和量化延迟对jvm的影响，也可以用来辨别jvm安全点操作还是应用程序引入的延迟。
@@ -239,130 +241,128 @@ FullGC中值得关注的是垃圾收集之前老年代和元数据区的占用�
 
 
 
-# 2 JConsole
+## 2. JConsole
 
 JConsole是一款随jdk发布的图形化jvm监控工具。
 
 
 
-## 2.1 启动
+### 2.1 启动
 
 在jdk安装目录的bin目录中可以找到jconsole，如下图：
 
-![img](./resources/2.1.png)
+![img](/img/java/jvm/2.1.png)
 
 在windows操作系统中，可以直接双击打开，也可以通过命令行打开。
 
 
 
-![img](./resources/2.2.png)
+![img](/img/java/jvm/2.2.png)
 
 
 
-## 2.2 连接jvm应用
+### 2.2 连接jvm应用
 
-我们选择上图中pid为7420的应用，点击连接。
+选择上图中pid为7420的应用，点击连接。
 
-![img](./resources/2.3.png)
-
-
-
-## 2.3 连接成功
-
-![img](./resources/2.4.png)
+![img](/img/java/jvm/2.3.png)
 
 
 
-## 2.4 内存监控
+### 2.3 连接成功
 
-![img](./resources/2.5.png)
+![img](/img/java/jvm/2.4.png)
+
+
+
+### 2.4 内存监控
+
+![img](/img/java/jvm/2.5.png)
 
 补充：监控时可以留意一下Survivor是否长时间处于满状态，如果是，说明Survivor已经溢出，对象在老化之前就被提升到老年代，对新生代调优可以解决该问题。
 
 
 
-## 2.5 线程监控 
+### 2.5 线程监控 
 
-![img](./resources/2.6.png)
-
-
-
-## 2.6 类加载监控
-
-![img](./resources/2.7.png)
+![img](/img/java/jvm/2.6.png)
 
 
 
-## 2.7 VM概要
+### 2.6 类加载监控
 
-![img](./resources/2.8.png)
+![img](/img/java/jvm/2.7.png)
+
+
+
+### 2.7 VM概要
+
+![img](/img/java/jvm/2.8.png)
 
 以文本形式显式当前时间jvm中各项监控指标的数据 
 
 
 
-## 2.8 MBean监控
+### 2.8 MBean监控
 
 此界面列出了所有MBean，可以点击相应的MBean查看属性状态 。
 
-![img](./resources/2.9.png)
+![img](/img/java/jvm/2.9.png)
 
 
 
-# 3 VisualVM
+## 3. VisualVM
 
 VisualVM也是一款随jdk发布的图形化监测工具。
 
 
 
-## 3.1 启动
+### 3.1 启动
 
 在jdk安装目录的bin目录中,可以找到jvisualvm,如下图:
-![img](./resources/3.1.png)
+![img](/img/java/jvm/3.1.png)
+
 在windows操作系统中,可以直接双击运行,也可以通过命令行运行
+![img](/img/java/jvm/3.2.png)
 
 
 
-![img](./resources/3.2.png)
-
-
-
-## 3.2 概述
+### 3.2 概述
 
 应用打开后，自动进入概述页面，此页面以文本形式列出了当前应用的一些基础信息。
-![img](./resources/3.3.png)
+![img](/img/java/jvm/3.3.png)
 
 
 
-## 3.3 监控
+### 3.3 监控
 
-![img](./resources/3.4.png)
+![img](/img/java/jvm/3.4.png)
 VisualVM默认将四个jvm监控指标放在了一起，每个指标的监控图与JConsole相比，没有JConsole数据详细，但是图形化要比JConsole更加直观。
 
 
 
-## 3.4 线程详情监测
+### 3.4 线程详情监测
 
-![img](./resources/3.5.png)
+![img](/img/java/jvm/3.5.png)
 VisualVM通过不同的颜色标记线程状态，相比JConsole，更加直观，但是却没有了JConsole中的堆栈追踪信息，在分析线程等待原因及死锁上不如JConsole。
 
 
 
-## 3.5 抽样器
+### 3.5 抽样器
 
 可以随时对cpu和内存进行抽样，后期出现问题时可以通过对不同时间点的抽样数据来查找原因。
-![img](./resources/3.6.png)
+![img](/img/java/jvm/3.6.png)
 
 
 
-## 3.6 性能分析
+### 3.6 性能分析
 
 可以对当前cpu和内存的状态进行性能分析。
-![img](./resources/3.7.png)
+![img](/img/java/jvm/3.7.png)
 
 
 
-# 4 jatack
+## 4. jatack
 
 快速定位java应用中的锁竞争，常用的技巧是用jdk的jatack抓取线程转储信息，监控锁竞争。
 
@@ -380,17 +380,19 @@ jstack [ option ] [server-id@]remote-hostname-or-IP
 **常用参数说明** 
 
 - options
-  `executable` Java executable from which the core dump was produced.(可能是产生core dump的java可执行程序)
-  `core` 将被打印信息的core dump文件
-  `remote-hostname-or-IP` 远程debug服务的主机名或ip
-  `server-id` 唯一id,假如一台主机上多个远程debug服务
+
+  - `executable` <br/>Java executable from which the core dump was produced.(可能是产生core dump的java可执行程序)。
+  - `core` <br/>将被打印信息的core dump文件。
+  - `remote-hostname-or-IP` <br/>远程debug服务的主机名或ip。
+  - `server-id` <br/>唯一id,假如一台主机上多个远程debug服务。
 
 - 基本参数
-  `-F` 当’jstack [-l] pid’没有相应的时候强制打印栈信息。
-  `-l` 长列表。打印关于锁的附加信息，例如属于java.util.concurrent的ownable synchronizers列表。
-  `-m  ` 打印java和native c/c++框架的所有栈信息，可以打印JVM的堆栈。
-  `-h | -help` 打印帮助信息。
-  `pid` 需要被打印配置信息的java进程id，可以用jps查询。
+
+  - `-F` <br/>当’jstack [-l] pid’没有相应的时候强制打印栈信息。
+  - `-l` <br/>长列表。打印关于锁的附加信息，例如属于java.util.concurrent的ownable synchronizers列表。
+  - `-m  ` <br/>打印java和native c/c++框架的所有栈信息，可以打印JVM的堆栈。
+  - `-h | -help` <br/>打印帮助信息。
+  - `pid` <br/>需要被打印配置信息的java进程id，可以用jps查询。
 
 
 
@@ -469,4 +471,4 @@ jstack [ option ] [server-id@]remote-hostname-or-IP
         - None
 ```
 
-上面是一段jstack日志，可以看到很多这种格式`waiting on condition [0x0000000060e0e000]`的文本，说明线程正在等待获取某个锁，中括号中的一串标识就是锁地址。每个锁在jatack日志中的标识都是唯一的，如果多个线程在等待同一个标识，那么说明在竞争同一个锁。jstack对追踪锁竞争和查看锁竞争激烈程度十分有用，对分析死锁也很有用。
+上面是一段jstack日志，可以看到很多这种格式 `waiting on condition [0x0000000060e0e000]` 的文本，说明线程正在等待获取某个锁，中括号中的一串标识就是锁地址。每个锁在jatack日志中的标识都是唯一的，如果多个线程在等待同一个标识，那么说明在竞争同一个锁。jstack对追踪锁竞争和查看锁竞争激烈程度十分有用，对分析死锁也很有用。

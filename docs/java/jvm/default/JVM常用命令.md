@@ -563,15 +563,15 @@ Server is ready.
 
 打开浏览器Http://localhost:7000，该页面提供了几个查询功能可供使用：
 
-![img](./resources/9.1.png)
+![img](/img/java/jvm/9.1.png)
 
 一般查看堆异常情况主要看这个两个部分： Show instance counts for all classes (excluding platform)，平台外的所有对象信息。如下图：
 
-![img](./resources/9.2.png)
+![img](/img/java/jvm/9.2.png)
 
 Show heap histogram 以树状图形式展示堆情况。如下图：
 
-![img](./resources/9.3.png)
+![img](/img/java/jvm/9.3.png)
 
 具体排查时需要结合代码，观察是否大量应该被回收的对象在一直被引用或者是否有占用内存特别大的对象无法被回收。
 一般情况，会down到客户端用工具来分析。

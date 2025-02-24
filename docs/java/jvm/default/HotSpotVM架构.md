@@ -1,9 +1,12 @@
-[TOC]
+---
+title: HotSpotVM 架构
+description: HotSpotVM 架构
+lang: zh-CN
+---
 
 HotSpot VM有3个主要组件: VM运行时(Runtime) , JIT编译器(JIT Compiler) , 内存管理器(Memory Manager)
 
 ## 1. 架构概览图
-
 
 
 ![img](/img/java/jvm/1.1.png)

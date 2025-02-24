@@ -78,7 +78,8 @@ module.exports = {
                     sidebarDepth: 2,    // 展开层级
                     children: [
                         ['/java/jvm/', '简介'],
-                        ['/java/jvm/default/HotSpotVM架构', 'HotSpotVM架构'],
+                        ['/java/jvm/default/HotSpotVM架构', 'HotSpotVM 架构'],
+                        ['/java/jvm/default/JVM性能监控', 'JVM性能监控'],
                     ]
                 }
             ],

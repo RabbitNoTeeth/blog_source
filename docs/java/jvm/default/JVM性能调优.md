@@ -4,7 +4,7 @@
 
 # 1 概述
 
-![img](./resources/4.1.png)
+![img](/img/java/jvm/4.1.png)
 
 上图描述了JVM调优的一般性流程。
 

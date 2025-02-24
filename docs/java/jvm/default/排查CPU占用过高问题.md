@@ -219,13 +219,13 @@ JNI global references: 880
 
 使用 **<a href="http://www.eclipse.org/mat/downloads.php" target="_blank">Eclipse Memory Analyzer</a>** 工具打开堆转储文件，分析结果显示出一个明显的可疑状态：
 
-<img src="./resources/10.1.png" style="zoom:100%;" />
+<img src="/img/java/jvm/10.1.png" style="zoom:100%;" />
 
 
 
 可以看到， **io.netty.channel.socket.nio.NioSocketChannel** 类存在大量的实例，占用了 87.5% 的堆内存，点击 Details 查看详细信息：
 
-<img src="./resources/10.2.png" style="zoom:100%;" />
+<img src="/img/java/jvm/10.2.png" style="zoom:100%;" />
 
 
 
@@ -249,13 +249,13 @@ JNI global references: 880
 
 最后，发现在http的FailureHandler，也就是异常处理器中，对于部分请求处理中出现的异常，未进行正确的响应：
 
-<img src="./resources/10.3.png" style="zoom:100%;" />
+<img src="/img/java/jvm/10.3.png" style="zoom:100%;" />
 
 
 
 修改程序，保证所有发生异常的请求都能响应：
 
-<img src="./resources/10.4.png" style="zoom:100%;" />
+<img src="/img/java/jvm/10.4.png" style="zoom:100%;" />
 
 
 
@@ -277,13 +277,13 @@ JNI global references: 880
 
 首先查看程序中实例数量，NioSockerChannel实例数达到了97940，每一个NioSockerChannel本质上都对应一个连接。而考虑实际场景，测温设备总数大约10000，并且是http协议，请求在响应完成后应该关闭，第5步的代码优化也保证了所有请求都能够响应，这个实例数很明显是不正常的，这还只是程序运行了大概4小时的堆转储
 
-<img src="./resources/10.5.png" style="zoom:100%;" />
+<img src="/img/java/jvm/10.5.png" style="zoom:100%;" />
 
 
 
 进一步查看NioSockerChannel实例的引用链，可以发现每个NioSockerChannel实例都被多个WindowsSelectorImpl实例引用，而WindowsSelectorImpl实例运行在名称为SelectThread的线程上
 
-<img src="./resources/10.6.png" style="zoom:100%;" />
+<img src="/img/java/jvm/10.6.png" style="zoom:100%;" />
 
 
 
@@ -293,25 +293,25 @@ WindowsSelectorImpl是java nio在windows上的实现，也就是说，这些NioS
 
 查看代码中创建http服务部分，发现vertx在创建http服务时，可以自定义一些配置（HttpServerOptions）：
 
-<img src="./resources/10.7.png" style="zoom:100%;" />
+<img src="/img/java/jvm/10.7.png" style="zoom:100%;" />
 
 
 
 那好，查看HttpServerOptions源码，发现其内部没有与channel关闭相关的参数，进一步查找其父类NetServerOptions，也没有找到有用的信息，再继续查找父类TCPSSLOptions，发现了这样一个属性：默认空闲超时时长
 
-<img src="./resources/10.8.png" style="zoom:100%;" />
+<img src="/img/java/jvm/10.8.png" style="zoom:100%;" />
 
 
 
 找到其set方法，查看注释，显然，idleTimeout用来控制空闲连接的超时时长，达到超时时长后该连接将被关闭；默认超时时长为0，即永不超时，也就是说连接永不关闭：
 
-<img src="./resources/10.9.png" style="zoom:100%;" />
+<img src="/img/java/jvm/10.9.png" style="zoom:100%;" />
 
 
 
 那好，修改创建http服务的代码，设置空闲连接的超时时长：
 
-<img src="./resources/10.10.png" style="zoom:100%;" />
+<img src="/img/java/jvm/10.10.png" style="zoom:100%;" />
 
 
 
