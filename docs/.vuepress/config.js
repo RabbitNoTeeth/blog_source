@@ -80,6 +80,7 @@ module.exports = {
                         ['/java/jvm/', '简介'],
                         ['/java/jvm/default/HotSpotVM架构', 'HotSpotVM 架构'],
                         ['/java/jvm/default/JVM性能监控', 'JVM性能监控'],
+                        ['/java/jvm/default/JVM性能调优', 'JVM性能调优'],
                     ]
                 }
             ],
